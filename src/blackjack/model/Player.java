@@ -33,6 +33,8 @@ public class Player {
             return false;
         } else if (!hand.cardsOnHand.get(0).equals(hand.cardsOnHand.get(1))) {
             return false;
+        } else if(bet > bank) {
+            return false;
         }
 
         return true;
@@ -74,6 +76,7 @@ public class Player {
         splitHand.addCard(hand.cardsOnHand.get(1));
         hand.cardsOnHand.remove(1);
         splitBet += bet;
+        bank -= bet;
     }
 
     public void insurance() {
