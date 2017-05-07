@@ -1,4 +1,4 @@
-package blackjack;
+package blackjack.model;
 
 import javafx.util.Pair;
 
@@ -6,34 +6,9 @@ import javafx.util.Pair;
  * Created by Jan on 5/5/2017.
  */
 public class Card {
-    enum Rank {
-        ACE,
-        TWO,
-        THREE,
-        FOUR,
-        FIVE,
-        SIX,
-        SEVEN,
-        EIGHT,
-        NINE,
-        TEN,
-        JACK,
-        QUEEN,
-        KING
-
-
-    }
-    enum Suit {
-        HEARTS,
-        DIAMONDS,
-        CLUBS,
-        SPADES
-    }
-
     private Suit suit;
     private Rank rank;
     private int[] value;
-
     private Pair[] values = new Pair[]{
             new Pair<>(Rank.TWO, 2),
             new Pair<>(Rank.THREE, 3),
@@ -49,7 +24,6 @@ public class Card {
             new Pair<>(Rank.KING, 10),
             new Pair<>(Rank.ACE, new int[]{1, 11})
     };
-
     public Card(Suit suit, Rank rank) {
         this.suit = suit;
         this.rank = rank;
@@ -80,6 +54,31 @@ public class Card {
 
     public int hashCode() {
         return rank.ordinal()+100*suit.ordinal();
+    }
+
+    enum Rank {
+        ACE,
+        TWO,
+        THREE,
+        FOUR,
+        FIVE,
+        SIX,
+        SEVEN,
+        EIGHT,
+        NINE,
+        TEN,
+        JACK,
+        QUEEN,
+        KING
+
+
+    }
+
+    enum Suit {
+        HEARTS,
+        DIAMONDS,
+        CLUBS,
+        SPADES
     }
 
 }

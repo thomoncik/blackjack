@@ -1,4 +1,4 @@
-package blackjack;
+package blackjack.model;
 
 /**
  * Created by Jan on 5/5/2017.

@@ -1,4 +1,4 @@
-package blackjack;
+package blackjack.model;
 
 import java.util.ArrayList;
 
@@ -8,6 +8,11 @@ import java.util.ArrayList;
 public class Hand {
     ArrayList<Card> cardsOnHand;
     int sumOfValues;
+
+    public Hand() {
+        cardsOnHand = new ArrayList<>();
+        sumOfValues = 0;
+    }
 
     public void addCard(Card card) {
         cardsOnHand.add(card);
@@ -26,11 +31,6 @@ public class Hand {
         else{
             sumOfValues += card.getValue()[0];
         }
-    }
-
-    public Hand() {
-        cardsOnHand = new ArrayList<>();
-        sumOfValues = 0;
     }
 
 }
