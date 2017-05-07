@@ -5,10 +5,11 @@ import javafx.util.Pair;
 /**
  * Created by Jan on 5/5/2017.
  */
-public class Card {
+class Card {
     private Suit suit;
     private Rank rank;
     private int[] value;
+
     private Pair[] values = new Pair[]{
             new Pair<>(Rank.TWO, 2),
             new Pair<>(Rank.THREE, 3),
@@ -24,6 +25,7 @@ public class Card {
             new Pair<>(Rank.KING, 10),
             new Pair<>(Rank.ACE, new int[]{1, 11})
     };
+
     public Card(Suit suit, Rank rank) {
         this.suit = suit;
         this.rank = rank;
@@ -34,26 +36,32 @@ public class Card {
         }
     }
 
-    public Rank getRank(){
+    Rank getRank() {
         return this.rank;
     }
 
-    public Suit getSuit(){
+    Suit getSuit() {
         return this.suit;
     }
 
-    public int[] getValue(){
+    int[] getValue() {
         return this.value;
     }
 
-    public boolean equals( Object o ) {
-        if( ! (o instanceof Card ) )  return false;
-        else if( ((Card) o).rank == this.rank && ((Card) o).suit == this.suit ) return true;
-        else return false;
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Card)) {
+            return false;
+        } else if (((Card) o).rank == this.rank && ((Card) o).suit == this.suit) {
+            return true;
+        }
+
+        return false;
     }
 
+    @Override
     public int hashCode() {
-        return rank.ordinal()+100*suit.ordinal();
+        return rank.ordinal() + 100 * suit.ordinal();
     }
 
     enum Rank {
@@ -70,8 +78,6 @@ public class Card {
         JACK,
         QUEEN,
         KING
-
-
     }
 
     enum Suit {
