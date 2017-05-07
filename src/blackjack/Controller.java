@@ -1,4 +1,4 @@
-package sample;
+package blackjack;
 
 public class Controller {
 }

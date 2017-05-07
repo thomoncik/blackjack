@@ -1,6 +1,4 @@
-package sample;
-
-import java.util.ArrayList;
+package blackjack;
 
 /**
  * Created by Jan on 5/5/2017.

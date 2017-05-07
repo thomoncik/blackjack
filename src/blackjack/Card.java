@@ -1,11 +1,6 @@
-package sample;
+package blackjack;
 
 import javafx.util.Pair;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Created by Jan on 5/5/2017.
