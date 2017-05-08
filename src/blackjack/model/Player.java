@@ -65,7 +65,7 @@ public class Player {
     public void stand() {
     }
 
-    public void double_down() {
+    public void doubleDown() {
         bet *= 2;
         bank -= bet;
         hand.addCard(deck.getRandomCard());

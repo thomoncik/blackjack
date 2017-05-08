@@ -7,9 +7,10 @@ import java.util.Random;
  */
 class Deck {
     private Card[] cards;
+    public static final int DECK_SIZE = Card.Rank.values().length * Card.Suit.values().length;
 
     Deck() {
-        cards = new Card[52];
+        cards = new Card[DECK_SIZE];
         int i = 0;
         for (Card.Rank rank : Card.Rank.values()) {
             for (Card.Suit suit : Card.Suit.values()) {
@@ -18,7 +19,8 @@ class Deck {
         }
     }
 
+    // @TODO: Fix
     Card getRandomCard() {
-        return cards[new Random().nextInt(52)];
+        return cards[new Random().nextInt(DECK_SIZE)];
     }
 }
