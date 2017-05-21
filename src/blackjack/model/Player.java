@@ -21,7 +21,7 @@ public class Player {
         bet = 0;
         splitBet = 0;
         insuranceBet = 0;
-        dealer = new Dealer();
+        dealer = new Dealer(deck);
     }
 
     public boolean isSplitted() {
@@ -59,7 +59,10 @@ public class Player {
     }
 
     public void hit() {
-        hand.addCard(deck.getRandomCard());
+        if(hand.getHandsValue() > 21)
+            stand();
+
+        hand.addCard(deck.getNextCard());
     }
 
     public void stand() {
@@ -82,5 +85,36 @@ public class Player {
     public void insurance() {
         bank -= bet / 2;
         insuranceBet = bet / 2;
+    }
+
+    public void dealerTurn(){
+        while(dealer.canTakeCard()){
+               dealer.hit();
+        }
+    }
+
+    //void for testing
+    public void myCards(){
+        for(int i = 0; i < hand.cardsOnHand.size(); i++)
+            System.out.println(hand.cardsOnHand.get(i));
+    }
+
+    //void for testing
+    public int myValue(){
+        return hand.getHandsValue();
+    }
+
+    //testing
+    public static void main(String[] args){
+        Player me = new Player();
+        me.hit();
+        me.hit();
+        me.dealerTurn();
+        System.out.println("MY CARDS");
+        me.myCards();
+        System.out.println("MY CARDS VALUE : " + me.myValue());
+        System.out.println("DEALER CARDS");
+        me.dealer.myCards();
+        System.out.println("DEALER CARDS VALUE : " + me.dealer.myValue());
     }
 }
