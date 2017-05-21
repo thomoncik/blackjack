@@ -8,7 +8,7 @@ import javafx.util.Pair;
 class Card {
     private Suit suit;
     private Rank rank;
-    private int[] value;
+    private Integer[] value;
 
     private Pair[] values = new Pair[]{
             new Pair<>(Rank.TWO, 2),
@@ -23,7 +23,7 @@ class Card {
             new Pair<>(Rank.JACK, 10),
             new Pair<>(Rank.QUEEN, 10),
             new Pair<>(Rank.KING, 10),
-            new Pair<>(Rank.ACE, new int[]{1, 11})
+            new Pair<>(Rank.ACE, new Integer[]{1, 11})
     };
 
     public Card(Suit suit, Rank rank) {
@@ -31,7 +31,12 @@ class Card {
         this.rank = rank;
         for (Pair p : values) {
             if (p.getKey() == rank) {
-                this.value = (int[]) p.getValue();
+                if( rank == Rank.ACE ){
+                    this.value = (Integer[]) p.getValue();
+                } else {
+                    this.value = new Integer[]{ (Integer) p.getValue() };
+                }
+                // problem with casting single Integer to array of Integers
             }
         }
     }
@@ -44,7 +49,7 @@ class Card {
         return this.suit;
     }
 
-    int[] getValue() {
+    Integer[] getValue() {
         return this.value;
     }
 
@@ -87,4 +92,7 @@ class Card {
         SPADES
     }
 
+    public String toString(){
+        return suit + " " + rank;
+    }
 }
