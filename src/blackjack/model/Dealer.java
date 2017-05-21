@@ -47,7 +47,6 @@ class Dealer {
 
     //void for testing
     public int myValue(){
-        return hand.getHandsValue()
-                ;
+        return hand.getHandsValue();
     }
 }
