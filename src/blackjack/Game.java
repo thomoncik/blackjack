@@ -1,43 +1,17 @@
 package blackjack;
 
-/**
- * @author Tomasz Homoncik
- */
-class FooState implements State {
-    private int iter = 0;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-    FooState() {
-        onEnter();
-    }
-
-    @Override
-    public void onEnter() {
-        System.out.println("Enter foo");
-    }
-
-    @Override
-    public void onExit() {
-        System.out.println("Exit foo");
-    }
-
-    @Override
-    public void run() {
-        System.out.println("Run foo " + iter);
-        iter++;
-        if (iter == 4) {
-            onExit();
-            StateManager.getInstance().setCurrentState(new FooState());
-        }
-    }
-}
-
-public class Game {
+// @TODO: Unit tests!
+public class Game extends Application {
 
     public static void main(String[] args) {
-        StateManager.getInstance().setCurrentState(new FooState());
+        launch(args);
+    }
 
-        while (true) {
-            StateManager.getInstance().getCurrentState().run();
-        }
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        StateManager.getInstance().setCurrentState(new MenuState(primaryStage));
     }
 }

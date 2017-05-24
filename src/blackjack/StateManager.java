@@ -3,7 +3,7 @@ package blackjack;
 /**
  * @author Tomasz Homoncik
  */
-class StateManager {
+public class StateManager {
     private static StateManager ourInstance = new StateManager();
     private static State currentState;
 
@@ -11,15 +11,19 @@ class StateManager {
 
     }
 
-    static StateManager getInstance() {
+    public static StateManager getInstance() {
         return ourInstance;
     }
 
-    State getCurrentState() {
+    public State getCurrentState() {
         return currentState;
     }
 
-    void setCurrentState(State state) {
+    public void setCurrentState(State state) {
+        if (currentState != null) {
+            currentState.onExit();
+        }
+        state.onEnter();
         currentState = state;
     }
 }
