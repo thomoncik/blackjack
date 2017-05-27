@@ -77,12 +77,11 @@ public class Player {
     }
 
     public void hit() {
+        hand.addCard(deck.getNextCard());
+
         if(hand.getHandsValue() > 21) {
             stand();
-            return;
         }
-
-        hand.addCard(deck.getNextCard());
     }
 
     public void stand() {

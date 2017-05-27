@@ -55,6 +55,34 @@ public class DeckProvider extends Deck{
             cards[2] = new Card(suit,Card.Rank.ACE);
             cards[3] = new Card(suit,Card.Rank.NINE);
             cards[4] = new Card(suit,Card.Rank.TWO);
+        }else if(s.equals("falseAces")){
+            DECK_SIZE = 5;
+            cards = new Card[DECK_SIZE];
+            Card.Suit suit = Card.Suit.HEARTS;
+            cards[0] = new Card(Card.Suit.CLUBS,Card.Rank.ACE);
+            cards[1] = new Card(suit,Card.Rank.QUEEN);
+            cards[2] = new Card(Card.Suit.SPADES,Card.Rank.ACE);
+            cards[3] = new Card(suit,Card.Rank.ACE);
+            cards[4] = new Card(Card.Suit.DIAMONDS, Card.Rank.ACE);
+        }else if(s.equals("aces")){
+            DECK_SIZE = 5;
+            cards = new Card[DECK_SIZE];
+            Card.Suit suit = Card.Suit.HEARTS;
+            cards[0] = new Card(Card.Suit.CLUBS,Card.Rank.ACE);
+            cards[1] = new Card(Card.Suit.SPADES,Card.Rank.ACE);
+            cards[2] = new Card(suit,Card.Rank.QUEEN);
+            cards[3] = new Card(suit,Card.Rank.ACE);
+            cards[4] = new Card(Card.Suit.DIAMONDS, Card.Rank.ACE);
+        }else if(s.equals("takeCard")){
+            DECK_SIZE = 6;
+            cards = new Card[DECK_SIZE];
+            Card.Suit suit = Card.Suit.HEARTS;
+            cards[0] = new Card(Card.Suit.CLUBS,Card.Rank.TWO);
+            cards[1] = new Card(Card.Suit.SPADES,Card.Rank.ACE);
+            cards[2] = new Card(suit,Card.Rank.TWO);
+            cards[3] = new Card(Card.Suit.DIAMONDS,Card.Rank.TWO);
+            cards[4] = new Card(Card.Suit.DIAMONDS, Card.Rank.ACE);
+            cards[5] = new Card(Card.Suit.CLUBS,Card.Rank.ACE);
         }
     }
 

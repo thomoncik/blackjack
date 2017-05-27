@@ -25,6 +25,16 @@ public class PlayerTest {
 
         assertTrue(split.getPlayer().canSplit());
         assertFalse(falseSplit.getPlayer().canSplit());
+
+        split.getPlayer().split();
+        assertTrue(split.getPlayer().isSplitted());
+        assertFalse(split.getPlayer().canSplit());
+
+        split = new TableProvider("split");
+        split.getPlayer().hit();
+        split.getPlayer().hit();
+
+        assertFalse(split.getPlayer().canSplit());
     }
 
     @Test
@@ -101,10 +111,16 @@ public class PlayerTest {
 
     @Test
     public void myValue() throws Exception {
-    }
+        TableProvider aces = new TableProvider("aces");
 
-    @Test
-    public void main() throws Exception {
+        aces.getPlayer().hit();
+
+        assertEquals(12,aces.getPlayer().myValue());
+
+        aces.getPlayer().hit();
+        aces.getPlayer().myCards();
+
+        assertEquals(13,aces.getPlayer().myValue());
     }
 
 }
