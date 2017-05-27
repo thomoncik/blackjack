@@ -1,6 +1,7 @@
 package blackjack.controller;
 
 import blackjack.AuthorsState;
+import blackjack.BettingState;
 import blackjack.GameState;
 import blackjack.StateManager;
 import javafx.application.Platform;
@@ -21,7 +22,7 @@ public class MenuController {
     }
 
     public void startGame(MouseEvent mouseEvent) {
-        StateManager.getInstance().setCurrentState(new GameState((Stage) anchorPane.getScene().getWindow()));
+        StateManager.getInstance().setCurrentState(new BettingState((Stage) anchorPane.getScene().getWindow()));
     }
 
     public void enterAuthors(MouseEvent mouseEvent) {

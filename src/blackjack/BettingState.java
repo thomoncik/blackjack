@@ -8,16 +8,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * @author Tomasz Homoncik
+ * Created by Jan on 5/27/2017.
  */
-public class GameState implements State {
+public class BettingState implements State {
     private Stage stage;
 
-    public GameState(Stage primaryStage) {
+    public BettingState(Stage primaryStage) {
         stage = primaryStage;
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("view/fxml/betting.fxml"));
+            root = FXMLLoader.load(getClass().getResource("view/betting.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -27,12 +27,12 @@ public class GameState implements State {
 
     @Override
     public void onEnter() {
-        System.out.println("Enter game");
+        System.out.println("Enter betting");
     }
 
     @Override
     public void onExit() {
-        System.out.println("Exit game");
+        System.out.println("Exit betting");
     }
 
     @Override

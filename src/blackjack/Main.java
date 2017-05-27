@@ -1,9 +1,28 @@
 package blackjack;
 
-import com.sun.javafx.application.LauncherImpl;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-public class Main {
+public class Main extends Application {
+
     public static void main(String[] args) {
-        LauncherImpl.launchApplication(Game.class, SlashScreenLoader.class, args);
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("view/fxml/splash-screen.fxml"));
+        Scene scene = new Scene(root, 300, 303);
+
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+
+        stage.setScene(scene);
+        stage.show();
     }
 }
