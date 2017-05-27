@@ -114,12 +114,9 @@ public class PlayerTest {
         TableProvider aces = new TableProvider("aces");
 
         aces.getPlayer().hit();
-
         assertEquals(12,aces.getPlayer().myValue());
 
         aces.getPlayer().hit();
-        aces.getPlayer().myCards();
-
         assertEquals(13,aces.getPlayer().myValue());
     }
 
