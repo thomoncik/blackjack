@@ -4,13 +4,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.GridPane?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="gridPane" stylesheets="@splash-screen.css"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="gridPane" stylesheets="@../css/splash-screen.css"
           xmlns="http://javafx.com/javafx/8.0.131" fx:controller="blackjack.controller.SplashScreenController">
-    <children>
-        <ImageView>
-            <image>
-                <Image url="@blackjack.png"/>
-            </image>
-        </ImageView>
-    </children>
+    <ImageView>
+        <Image url="@../img/blackjack.png"/>
+    </ImageView>
 </GridPane>

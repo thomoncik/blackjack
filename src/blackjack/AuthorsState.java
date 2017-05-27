@@ -17,7 +17,7 @@ public class AuthorsState implements State {
         stage = primaryStage;
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("view/authors.fxml"));
+            root = FXMLLoader.load(getClass().getResource("view/fxml/authors.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

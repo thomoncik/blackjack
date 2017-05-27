@@ -17,7 +17,7 @@ public class MenuState implements State {
         stage = primaryStage;
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("view/main-menu.fxml"));
+            root = FXMLLoader.load(getClass().getResource("view/fxml/main-menu.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
