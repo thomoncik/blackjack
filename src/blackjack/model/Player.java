@@ -1,5 +1,8 @@
 package blackjack.model;
 
+import java.util.Objects;
+import java.util.Scanner;
+
 /**
  * Created by Jan on 5/5/2017.
  */
@@ -12,16 +15,26 @@ public class Player {
     private int insuranceBet;
     private Deck deck;
     private Dealer dealer;
+    private boolean insured;
 
-    public Player() {
+    public Player(Deck d) {
         hand = new Hand();
-        deck = new Deck();
+        deck = d;
+        hand.addCard(deck.getNextCard());
         splitHand = null;
         bank = 1000;
         bet = 0;
         splitBet = 0;
         insuranceBet = 0;
-        dealer = new Dealer(deck);
+    }
+
+    void setDealer(Dealer d){
+        dealer = d;
+    }
+
+    public void setBet(int i){
+        bet += i;
+        bank -= i;
     }
 
     public boolean isSplitted() {
@@ -31,9 +44,11 @@ public class Player {
     public boolean canSplit() {
         if (hand.cardsOnHand.size() != 2) {
             return false;
-        } else if (!hand.cardsOnHand.get(0).equals(hand.cardsOnHand.get(1))) {
+        } else if (!hand.cardsOnHand.get(0).getValue()[0].equals(hand.cardsOnHand.get(1).getValue()[0])) {
             return false;
         } else if(bet > bank) {
+            return false;
+        }else if(isSplitted()) {
             return false;
         }
 
@@ -51,6 +66,9 @@ public class Player {
     }
 
     public boolean ifCanInsurance() {
+        if(insured)
+            return false;
+
         if (bet / 2 > bank) {
             return false;
         }
@@ -59,19 +77,21 @@ public class Player {
     }
 
     public void hit() {
-        if(hand.getHandsValue() > 21)
-            stand();
-
         hand.addCard(deck.getNextCard());
+
+        if(hand.getHandsValue() > 21) {
+            stand();
+        }
     }
 
     public void stand() {
+        dealerTurn();
     }
 
     public void doubleDown() {
         bet *= 2;
         bank -= bet;
-        hand.addCard(deck.getRandomCard());
+        hit();
     }
 
     public void split() {
@@ -85,6 +105,7 @@ public class Player {
     public void insurance() {
         bank -= bet / 2;
         insuranceBet = bet / 2;
+        insured = true;
     }
 
     public void dealerTurn(){
@@ -104,17 +125,4 @@ public class Player {
         return hand.getHandsValue();
     }
 
-    //testing
-    public static void main(String[] args){
-        Player me = new Player();
-        me.hit();
-        me.hit();
-        me.dealerTurn();
-        System.out.println("MY CARDS");
-        me.myCards();
-        System.out.println("MY CARDS VALUE : " + me.myValue());
-        System.out.println("DEALER CARDS");
-        me.dealer.myCards();
-        System.out.println("DEALER CARDS VALUE : " + me.dealer.myValue());
-    }
 }

@@ -37,7 +37,4 @@ class Deck {
         return cards[randomOrderOfCards.get(nextCard++)];
     }
 
-    Card getRandomCard() {
-        return cards[new Random().nextInt(DECK_SIZE)];
-    }
 }
