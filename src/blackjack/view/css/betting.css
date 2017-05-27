@@ -1,0 +1,96 @@
+.root {
+    -fx-background-color: #1E824C;
+}
+
+.button {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+
+    -fx-font-family: 'DejaVu Sans Condensed', sans-serif;
+    -fx-border-radius: 0;
+    -fx-font-size: 16px;
+
+    -fx-text-fill: #FFFFFF;
+}
+
+.button:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.label {
+    -fx-font-family: 'DejaVu Sans Condensed', sans-serif;
+    -fx-border-radius: 0;
+    -fx-font-size: 16px;
+
+    -fx-text-fill: #ECF0F1;
+}
+
+#add5 {
+    -fx-background-color: #95A5A6;
+    -fx-border-style: dashed;
+    -fx-border-color: #ECF0F1;
+    -fx-border-radius: 5em;
+    -fx-border-width: 2px;
+
+    -fx-background-radius: 5em;
+    -fx-min-width: 64px;
+    -fx-min-height: 64px;
+    -fx-max-width: 64px;
+    -fx-max-height: 64px;
+}
+
+#add10 {
+    -fx-background-color: #96281B;
+    -fx-border-style: dashed;
+    -fx-border-color: #ECF0F1;
+    -fx-border-radius: 5em;
+    -fx-border-width: 2px;
+
+    -fx-background-radius: 5em;
+    -fx-min-width: 64px;
+    -fx-min-height: 64px;
+    -fx-max-width: 64px;
+    -fx-max-height: 64px;
+}
+
+#add25 {
+    -fx-background-color: #4DAF7C;
+    -fx-border-style: dashed;
+    -fx-border-color: #ECF0F1;
+    -fx-border-radius: 5em;
+    -fx-border-width: 2px;
+
+    -fx-background-radius: 5em;
+    -fx-min-width: 64px;
+    -fx-min-height: 64px;
+    -fx-max-width: 64px;
+    -fx-max-height: 64px;
+}
+
+#add50 {
+    -fx-background-color: #303030;
+    -fx-border-style: dashed;
+    -fx-border-color: #ECF0F1;
+    -fx-border-radius: 5em;
+    -fx-border-width: 2px;
+
+    -fx-background-radius: 5em;
+    -fx-min-width: 64px;
+    -fx-min-height: 64px;
+    -fx-max-width: 64px;
+    -fx-max-height: 64px;
+}
+
+#add100 {
+    -fx-background-color: #34495E;
+    -fx-border-style: dashed;
+    -fx-border-radius: 5em;
+    -fx-border-width: 2px;
+    -fx-border-color: #ECF0F1;
+
+    -fx-background-radius: 5em;
+    -fx-min-width: 64px;
+    -fx-min-height: 64px;
+    -fx-max-width: 64px;
+    -fx-max-height: 64px;
+}
