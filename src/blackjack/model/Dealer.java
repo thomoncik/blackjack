@@ -4,15 +4,13 @@ package blackjack.model;
  * Created by Jan on 5/7/2017.
  */
 class Dealer {
-    // @TODO: hand is not assigned nowhere
     private Hand hand;
     private Deck deck;
 
     Dealer(Deck d){
         hand = new Hand();
         deck = d;
-        hand.addCard(d.getNextCard());
-        hand.addCard(d.getNextCard());
+        begin();
     }
 
     public boolean canTakeCard() {
@@ -37,6 +35,15 @@ class Dealer {
 
     boolean gotAceOnFace() {
         return hand.cardsOnHand.get(0).getRank() == Card.Rank.ACE;
+    }
+
+    void clearMyHand(){
+        hand.clear();
+    }
+
+    void begin(){
+        hit();
+        hit();
     }
 
     //void for testing

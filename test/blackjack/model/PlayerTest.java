@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
  * Created by mat_k on 24.05.2017.
  */
 public class PlayerTest {
+
     @Test
     public void isSplitted() throws Exception {
     }
@@ -103,6 +104,26 @@ public class PlayerTest {
 
     @Test
     public void dealerTurn() throws Exception {
+    }
+
+    @Test
+    public void clearMyHand() throws Exception {
+        Table table = new Table();
+
+        assertTrue(table.getPlayer().myValue() > 0);
+
+        table.getPlayer().clearMyHand();
+
+        assertTrue(table.getPlayer().myValue() == 0);
+    }
+
+    @Test
+    public void begin() throws Exception {
+        Table table = new Table();
+        table.getPlayer().clearMyHand();
+        table.getPlayer().begin();
+
+        assertTrue(table.getPlayer().myValue() > 0 && table.getPlayer().myValue() < 12);
     }
 
     @Test

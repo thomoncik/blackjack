@@ -20,7 +20,7 @@ public class Player {
     public Player(Deck d) {
         hand = new Hand();
         deck = d;
-        hand.addCard(deck.getNextCard());
+        hit();
         splitHand = null;
         bank = 1000;
         bet = 0;
@@ -112,6 +112,14 @@ public class Player {
         while(dealer.canTakeCard()){
                dealer.hit();
         }
+    }
+
+    void clearMyHand(){
+        hand.clear();
+    }
+
+    void begin(){
+        hit();
     }
 
     //void for testing
