@@ -1,0 +1,30 @@
+.root {
+    -fx-background-color: #1E824C;
+}
+
+.button {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+
+    -fx-font-family: 'DejaVu Sans Condensed', sans-serif;
+    -fx-border-radius: 0;
+    -fx-font-size: 16px;
+
+    -fx-text-fill: #FFFFFF;
+}
+
+.button:hover {
+    -fx-border-style: solid;
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: rgba(255, 255, 255, 0.5) #1E824C rgba(255, 255, 255, 0.5) #1E824C;
+    -fx-background-color: #1E824C;
+    -fx-font-family: "DejaVu Sans Mono", monospace;
+    -fx-scale-x: 1.1;
+}
+
+.label {
+    -fx-font-family: 'DejaVu Sans Condensed', sans-serif;
+    -fx-border-radius: 0;
+    -fx-font-size: 16px;
+
+    -fx-text-fill: #ECF0F1;
+}
