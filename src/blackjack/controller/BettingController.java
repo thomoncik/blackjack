@@ -41,6 +41,13 @@ public class BettingController {
     public void enterMenu(MouseEvent mouseEvent) {
         StateManager.getInstance().setCurrentState(new MenuState((Stage) anchorPane.getScene().getWindow()));
     }
+
+    public void enterToFirstRound(MouseEvent mouseEvent) {
+        GameState gState = new GameState((Stage) anchorPane.getScene().getWindow(), sumOfBets);
+        //gState.setBet(sumOfBets);
+        StateManager.getInstance().setCurrentState(gState);
+    }
+
     private void printBetAndCash(){
         printBet.setText("BET "+sumOfBets+"$");
         printMyCash.setText("YOUR CASH "+myCash+"$");
@@ -150,9 +157,5 @@ public class BettingController {
             addToBet(100);
         }
         printBetAndCash();
-    }
-
-    public void enterToFirstRound(MouseEvent mouseEvent) {
-        StateManager.getInstance().setCurrentState(new GameState((Stage) anchorPane.getScene().getWindow()));
     }
 }
