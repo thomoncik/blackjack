@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="667.0" prefWidth="375.0"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../css/menu.css" prefHeight="667.0" prefWidth="375.0"
           xmlns="http://javafx.com/javafx/8.0.131" fx:controller="blackjack.controller.HighScoresController">
     <columnConstraints>
         <ColumnConstraints/>
