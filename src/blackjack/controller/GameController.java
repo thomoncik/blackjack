@@ -2,8 +2,8 @@ package blackjack.controller;
 
 import blackjack.GameState;
 import blackjack.MenuState;
-import blackjack.State;
 import blackjack.StateManager;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -11,7 +11,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import javax.swing.text.html.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,10 +18,9 @@ import java.util.ResourceBundle;
  * Created by Jan on 5/27/2017.
  */
 public class GameController implements Initializable {
+    public javafx.scene.image.ImageView p;
     //@TODO fixing moving bet value from BettingState to GameState
     int bet;
-
-    public javafx.scene.image.ImageView p;
     @FXML
     AnchorPane anchorPane;
     @FXML
@@ -34,12 +32,16 @@ public class GameController implements Initializable {
     @FXML
     javafx.scene.image.ImageView dealerSecondCard;
     @FXML
-    javafx.scene.control.Label printBet = new Label("YOUR CASH " +bet+ "$");
+    javafx.scene.control.Label printBet = new Label("YOUR CASH " + bet + "$");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         DataUpdater dataUpdater = new DataUpdater();
         dataUpdater.start();
+    }
+
+    public void enterMenu(MouseEvent mouseEvent) {
+        StateManager.getInstance().setCurrentState(new MenuState((Stage) anchorPane.getScene().getWindow()));
     }
 
     class DataUpdater extends Thread {
@@ -51,11 +53,13 @@ public class GameController implements Initializable {
         public void run() {
             while (true) {
                 if (StateManager.getInstance().getCurrentState() instanceof GameState) {
-                    synchronized (printBet){
-                        bet = ((GameState) StateManager.getInstance().getCurrentState()).getBet();
-                        printBet.setText("YOUR CASH "+bet+"$");
-                    }
-                    System.out.println(bet);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            bet = ((GameState) StateManager.getInstance().getCurrentState()).getBet();
+                            printBet.setText("YOUR CASH " + bet + "$");
+                        }
+                    });
                 }
                 try {
                     Thread.sleep(1000);
@@ -64,10 +68,6 @@ public class GameController implements Initializable {
                 }
             }
         }
-    }
-
-    public void enterMenu(MouseEvent mouseEvent) {
-        StateManager.getInstance().setCurrentState(new MenuState((Stage) anchorPane.getScene().getWindow()));
     }
 
 }
