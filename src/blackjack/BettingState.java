@@ -27,12 +27,12 @@ public class BettingState implements State {
 
     @Override
     public void onEnter() {
-        System.out.println("Enter game");
+        System.out.println("Enter betting");
     }
 
     @Override
     public void onExit() {
-        System.out.println("Exit game");
+        System.out.println("Exit betting");
     }
 
     @Override
