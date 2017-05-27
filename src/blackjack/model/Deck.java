@@ -34,6 +34,10 @@ class Deck {
     }
 
     Card getNextCard() {
+        if(nextCard == 52){
+            Collections.shuffle(randomOrderOfCards);
+            nextCard = 0;
+        }
         return cards[randomOrderOfCards.get(nextCard++)];
     }
 

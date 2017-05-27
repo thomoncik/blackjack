@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
  * Created by mat_k on 27.05.2017.
  */
 public class DealerTest {
+
     @Test
     public void canTakeCard() throws Exception {
         TableProvider aces = new TableProvider("aces");
@@ -43,6 +44,26 @@ public class DealerTest {
 
         assertTrue(aces.getDealer().gotAceOnFace());
         assertFalse(falseAces.getDealer().gotAceOnFace());
+    }
+
+    @Test
+    public void clearMyHand() throws Exception {
+        Table table = new Table();
+
+        assertTrue(table.getDealer().myValue() > 0);
+
+        table.getDealer().clearMyHand();
+
+        assertTrue(table.getDealer().myValue() == 0);
+    }
+
+    @Test
+    public void begin() throws Exception {
+        Table table = new Table();
+        table.getDealer().clearMyHand();
+        table.getDealer().begin();
+
+        assertTrue(table.getDealer().myValue() > 3 );
     }
 
     @Test
