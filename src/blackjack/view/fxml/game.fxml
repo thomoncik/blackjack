@@ -7,8 +7,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" prefHeight="667.0" prefWidth="375.0"
-          vgap="10" xmlns="http://javafx.com/javafx/8.0.112" fx:controller="blackjack.controller.GameController">
+
+<?import javafx.scene.image.Image?>
+<GridPane alignment="center" hgap="10" prefHeight="667.0" prefWidth="375.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="blackjack.controller.GameController">
     <columnConstraints>
         <ColumnConstraints />
     </columnConstraints>
@@ -21,11 +22,11 @@
                 <Label fx:id="dealer" layoutX="170.5" layoutY="30" mnemonicParsing="false" prefHeight="40" prefWidth="70" text="DEALER" textAlignment="CENTER" />
                 <Label fx:id="player" layoutX="170.5" layoutY="600" mnemonicParsing="false" prefHeight="40" prefWidth="70" text="PLAYER" textAlignment="CENTER" />
                 <Button layoutX="50.5" layoutY="67.0" mnemonicParsing="false" onMouseClicked="#enterMenu" prefHeight="56.0" prefWidth="68.0" text="Wróć" />
-                <Label fx:id="printBet" layoutX="30" layoutY="600" prefHeight="40" prefWidth="120"/>
-                <ImageView fx:id="playerFirstCard" layoutX="100" layoutY="467"/>
-                <ImageView fx:id="playerSecondCardCard" layoutX="275" layoutY="467"/>
-                <ImageView fx:id="dealerFirstCard" layoutX="100" layoutY="167"/>
-                <ImageView fx:id="dealerSecondCard" layoutX="275" layoutY="167"/>
+                <Label fx:id="printBet" layoutX="30" layoutY="600" prefHeight="40" prefWidth="120" />
+                <ImageView fx:id="playerFirstCard" layoutX="275" layoutY="467" />
+                <ImageView fx:id="playerSecondCard" layoutX="275" layoutY="467" />
+                <ImageView fx:id="dealerFirstCard" layoutX="100" layoutY="167" />
+                <ImageView fx:id="dealerSecondCard" layoutX="275" layoutY="167" />
             </children></AnchorPane>
     </children>
 </GridPane>

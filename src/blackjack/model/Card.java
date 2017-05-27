@@ -5,7 +5,7 @@ import javafx.util.Pair;
 /**
  * Created by Jan on 5/5/2017.
  */
-class Card {
+public class Card {
     private Suit suit;
     private Rank rank;
     private Integer[] value;
@@ -93,6 +93,19 @@ class Card {
     }
 
     public String toString(){
-        return suit + " " + rank;
+        String str;
+        if( rank != Rank.ACE ){
+            str = value[0]+"_of_"+suit;
+            return str.toLowerCase();
+        }
+        else{
+            str = "ace_of_" + suit;
+            return str.toLowerCase();
+        }
+    }
+
+    public static void main(String[] args){
+        Card c = new Card(Suit.SPADES, Rank.TWO);
+        System.out.println("view/img/cards/" + c + ".png");
     }
 }

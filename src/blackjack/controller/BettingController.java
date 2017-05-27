@@ -5,10 +5,12 @@ import blackjack.MenuState;
 import blackjack.StateManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 import java.awt.*;
 import java.awt.Button;
@@ -33,6 +35,7 @@ public class BettingController {
     javafx.scene.control.Button switchToFirstRound;
     @FXML
     AnchorPane anchorPane;
+    @FXML
 
 
     int sumOfBets = 0;

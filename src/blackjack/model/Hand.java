@@ -5,13 +5,18 @@ import java.util.ArrayList;
 /**
  * Created by Jan on 5/5/2017.
  */
-class Hand {
+public class Hand {
     ArrayList<Card> cardsOnHand;
     private int sumOfValues;
 
     Hand() {
         cardsOnHand = new ArrayList<>();
         sumOfValues = 0;
+    }
+
+    public Card getIthCard(int i){
+        if( i >= 0 && i < cardsOnHand.size() ) return cardsOnHand.get(i);
+        else return null;
     }
 
     void addCard(Card card) {

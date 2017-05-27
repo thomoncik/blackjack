@@ -3,14 +3,18 @@ package blackjack.controller;
 import blackjack.GameState;
 import blackjack.MenuState;
 import blackjack.StateManager;
+import blackjack.model.Table;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,8 +23,8 @@ import java.util.ResourceBundle;
  */
 public class GameController implements Initializable {
     public javafx.scene.image.ImageView p;
-    //@TODO fixing moving bet value from BettingState to GameState
     int bet;
+    Table table;
     @FXML
     AnchorPane anchorPane;
     @FXML
@@ -58,6 +62,11 @@ public class GameController implements Initializable {
                         public void run() {
                             bet = ((GameState) StateManager.getInstance().getCurrentState()).getBet();
                             printBet.setText("YOUR CASH " + bet + "$");
+//                            table = new Table();
+//                            String url = "file:view/img/cards/" + table.getPlayer().getHand().getIthCard(0).toString() + ".png";
+//                            String url1 = "http://picresize.com/popup.html?images/rsz_12_of_clubs.png";
+//                            File file = new File(url);
+//                            playerFirstCard.setImage(new Image(file.toURI().toString()));
                         }
                     });
                 }
