@@ -17,7 +17,7 @@ public class GameState implements State {
         stage = primaryStage;
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("view/sample.fxml"));
+            root = FXMLLoader.load(getClass().getResource("view/betting.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
