@@ -1,5 +1,6 @@
 package blackjack.controller;
 
+import blackjack.GameState;
 import blackjack.MenuState;
 import blackjack.StateManager;
 import javafx.fxml.FXML;
@@ -152,5 +153,6 @@ public class BettingController {
     }
 
     public void enterToFirstRound(MouseEvent mouseEvent) {
+        StateManager.getInstance().setCurrentState(new GameState((Stage) anchorPane.getScene().getWindow()));
     }
 }
