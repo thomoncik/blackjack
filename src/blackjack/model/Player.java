@@ -28,10 +28,6 @@ public class Player {
         insuranceBet = 0;
     }
 
-    public Hand getHand(){
-        return hand;
-    }
-
     void setDealer(Dealer d){
         dealer = d;
     }
@@ -114,7 +110,7 @@ public class Player {
 
     public void dealerTurn(){
         while(dealer.canTakeCard()){
-               dealer.hit();
+            dealer.hit();
         }
     }
 
