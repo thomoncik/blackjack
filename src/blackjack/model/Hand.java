@@ -24,6 +24,11 @@ public class Hand {
         actualizeValue(card);
     }
 
+    void clear(){
+        cardsOnHand.clear();
+        sumOfValues = 0;
+    }
+
     int getHandsValue() {
         return sumOfValues;
     }
