@@ -7,13 +7,13 @@ import java.util.Random;
 /**
  * Created by Jan on 5/5/2017.
  */
-class Deck {
+public class Deck {
     public static final int DECK_SIZE = Card.Rank.values().length * Card.Suit.values().length;
     private Card[] cards;
     private ArrayList<Integer> randomOrderOfCards;
     private int nextCard;
 
-    Deck() {
+    public Deck() {
         cards = new Card[DECK_SIZE];
         randomOrderOfCards = new ArrayList<>();
         int i = 0;
@@ -33,7 +33,7 @@ class Deck {
         for( int i = 0 ; i < DECK_SIZE; i++ ) System.out.println(deck.getNextCard());
     }
 
-    Card getNextCard() {
+    public Card getNextCard() {
         if(nextCard == 52){
             Collections.shuffle(randomOrderOfCards);
             nextCard = 0;

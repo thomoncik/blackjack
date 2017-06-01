@@ -31,6 +31,10 @@ public class GameState implements State {
         return bet;
     }
 
+    public Stage getStage(){
+        return stage;
+    }
+
     @Override
     public void onEnter() {
         System.out.println("Enter game");

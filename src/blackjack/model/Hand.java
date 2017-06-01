@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Jan on 5/5/2017.
  */
-class Hand {
+public class Hand {
     ArrayList<Card> cardsOnHand;
     private int sumOfValues;
 
@@ -22,6 +22,10 @@ class Hand {
     void clear(){
         cardsOnHand.clear();
         sumOfValues = 0;
+    }
+
+    public Card getIthCard(int i){
+        return cardsOnHand.get(i);
     }
 
     int getHandsValue() {

@@ -28,6 +28,10 @@ public class Player {
         insuranceBet = 0;
     }
 
+    public Hand getHand(){
+        return hand;
+    }
+
     void setDealer(Dealer d){
         dealer = d;
     }

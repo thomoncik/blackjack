@@ -87,7 +87,7 @@ public class DeckProvider extends Deck{
     }
 
     @Override
-    Card getNextCard() {
+    public Card getNextCard() {
         return cards[nextCard++];
     }
 }

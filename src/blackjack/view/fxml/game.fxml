@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.image.Image?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../css/menu.css" alignment="center" hgap="10"
           prefHeight="667.0" prefWidth="375.0"
           vgap="10" xmlns="http://javafx.com/javafx/8.0.112" fx:controller="blackjack.controller.GameController">
@@ -24,7 +25,11 @@
         <Button layoutX="50.5" layoutY="67.0" mnemonicParsing="false" onMouseClicked="#enterMenu" prefHeight="56.0"
                 prefWidth="68.0" text="Wróć"/>
         <Label fx:id="printBet" layoutX="30" layoutY="600" prefHeight="40" prefWidth="120"/>
-        <ImageView fx:id="playerFirstCard" layoutX="100" layoutY="467"/>
+        <ImageView fx:id="playerFirstCard" layoutX="100" layoutY="467">
+            <image>
+                <Image url = "@../img/cards/2_of_diamonds.png"/>
+            </image>
+        </ImageView>
         <ImageView fx:id="playerSecondCardCard" layoutX="275" layoutY="467"/>
         <ImageView fx:id="dealerFirstCard" layoutX="100" layoutY="167"/>
         <ImageView fx:id="dealerSecondCard" layoutX="275" layoutY="167"/>
