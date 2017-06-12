@@ -71,35 +71,20 @@ public class Card {
 
     public String toString() {
         String str;
-        if (rank != Rank.ACE) {
-            str = value[0] + "_of_" + suit;
+        if (rank == Rank.ACE) {
+            str = "ace_of_" + suit;
             return str.toLowerCase();
         } else {
-            str = "ace_of_" + suit;
+            str = value[0] + "_of_" + suit;
             return str.toLowerCase();
         }
     }
 
     public enum Rank {
-        ACE,
-        TWO,
-        THREE,
-        FOUR,
-        FIVE,
-        SIX,
-        SEVEN,
-        EIGHT,
-        NINE,
-        TEN,
-        JACK,
-        QUEEN,
-        KING
+        ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING
     }
 
     public enum Suit {
-        HEARTS,
-        DIAMONDS,
-        CLUBS,
-        SPADES
+        HEARTS, DIAMONDS, CLUBS, SPADES
     }
 }
