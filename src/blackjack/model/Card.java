@@ -31,10 +31,10 @@ public class Card {
         this.rank = rank;
         for (Pair p : values) {
             if (p.getKey() == rank) {
-                if( rank == Rank.ACE ){
+                if (rank == Rank.ACE) {
                     this.value = (Integer[]) p.getValue();
                 } else {
-                    this.value = new Integer[]{ (Integer) p.getValue() };
+                    this.value = new Integer[]{(Integer) p.getValue()};
                 }
                 // problem with casting single Integer to array of Integers
             }
@@ -69,7 +69,18 @@ public class Card {
         return rank.ordinal() + 100 * suit.ordinal();
     }
 
-    enum Rank {
+    public String toString() {
+        String str;
+        if (rank != Rank.ACE) {
+            str = value[0] + "_of_" + suit;
+            return str.toLowerCase();
+        } else {
+            str = "ace_of_" + suit;
+            return str.toLowerCase();
+        }
+    }
+
+    public enum Rank {
         ACE,
         TWO,
         THREE,
@@ -85,27 +96,10 @@ public class Card {
         KING
     }
 
-    enum Suit {
+    public enum Suit {
         HEARTS,
         DIAMONDS,
         CLUBS,
         SPADES
-    }
-
-    public String toString(){
-        String str;
-        if( rank != Rank.ACE ){
-            str = value[0]+"_of_"+suit;
-            return str.toLowerCase();
-        }
-        else{
-            str = "ace_of_" + suit;
-            return str.toLowerCase();
-        }
-    }
-
-    public static void main(String[] args){
-        Card c = new Card(Suit.SPADES, Rank.TWO);
-        System.out.println("view/img/cards/" + c + ".png");
     }
 }
