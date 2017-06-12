@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" prefHeight="667.0" prefWidth="375.0"
-          stylesheets="@../css/menu.css" vgap="10" xmlns="http://javafx.com/javafx/8.0.131"
+          stylesheets="@../css/game.css" vgap="10" xmlns="http://javafx.com/javafx/8.0.131"
           fx:controller="blackjack.controller.GameController">
     <columnConstraints>
         <ColumnConstraints/>
@@ -22,6 +21,11 @@
 
         <Button layoutX="50.5" layoutY="67.0" mnemonicParsing="false" onMouseClicked="#enterMenu" prefHeight="56.0"
                 prefWidth="68.0" text="Wróć"/>
+
+        <Button layoutY="228" layoutX="32.0" prefHeight="64.0" prefWidth="64.0" text="Split"/>
+        <Button layoutY="312" layoutX="32.0" prefHeight="64.0" prefWidth="64.0" text="Double"/>
+        <Button layoutY="386" layoutX="32.0" prefHeight="64.0" prefWidth="64.0" text="Hit"/>
+        <Button layoutY="460" layoutX="32.0" prefHeight="64.0" prefWidth="64.0" text="Stand"/>
 
         <Label fx:id="printBet" layoutX="30" layoutY="600" prefHeight="40" prefWidth="120"/>
 

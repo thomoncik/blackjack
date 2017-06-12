@@ -1,8 +1,5 @@
 package blackjack.model;
 
-import java.util.Objects;
-import java.util.Scanner;
-
 /**
  * Created by Jan on 5/5/2017.
  */
@@ -166,12 +163,6 @@ public class Player {
 
         dealer.clearMyHand();
         clearMyHand();
-    }
-
-    //void for testing
-    public void myCards(){
-        for(int i = 0; i < hand.cardsOnHand.size(); i++)
-            System.out.println(hand.cardsOnHand.get(i));
     }
 
     //void for testing

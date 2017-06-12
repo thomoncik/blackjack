@@ -1,5 +1,6 @@
 package blackjack.controller;
 
+import blackjack.AssetManager;
 import blackjack.GameState;
 import blackjack.MenuState;
 import blackjack.StateManager;
@@ -56,8 +57,9 @@ public class GameController implements Initializable {
                     Platform.runLater(() -> {
                         bet = ((GameState) StateManager.getInstance().getCurrentState()).getBet();
                         printBet.setText("YOUR CASH " + bet + "$");
-                        table = new Table();
-//                        playerFirstCard.setImage(AssetManager.getInstance().getAsset(new Card(Card.Suit.HEARTS, Card.Rank.ACE).toString()));
+                        table = (table == null) ? new Table() : table;
+                        playerFirstCard.setImage(AssetManager.getInstance().getAsset(table.getPlayer().getHand().getIthCard(0).toString()));
+                        dealerFirstCard.setImage(AssetManager.getInstance().getAsset(table.getDealer().getHand().getIthCard(0).toString()));
                     });
                 }
                 try {

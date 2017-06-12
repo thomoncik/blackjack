@@ -3,11 +3,11 @@ package blackjack.model;
 /**
  * Created by Jan on 5/7/2017.
  */
-class Dealer {
+public class Dealer {
     private Hand hand;
     private Deck deck;
 
-    Dealer(Deck d){
+    Dealer(Deck d) {
         hand = new Hand();
         deck = d;
         begin();
@@ -37,27 +37,29 @@ class Dealer {
         return hand.cardsOnHand.get(0).getRank() == Card.Rank.ACE;
     }
 
-    boolean busted(){ return hand.getHandsValue() > 21;}
+    boolean busted() {
+        return hand.getHandsValue() > 21;
+    }
 
-    void clearMyHand(){ hand.clear(); }
+    void clearMyHand() {
+        hand.clear();
+    }
 
-    void begin(){
+    void begin() {
         hit();
         hit();
     }
 
-    void ending(){
+    void ending() {
         clearMyHand();
     }
 
-    //void for testing
-    public void myCards(){
-        for(int i = 0; i < hand.cardsOnHand.size(); i++)
-            System.out.println(hand.cardsOnHand.get(i));
+    public Hand getHand() {
+        return hand;
     }
 
 
-    public int myValue(){
+    public int myValue() {
         return hand.getHandsValue();
     }
 }
