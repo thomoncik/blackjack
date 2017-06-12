@@ -22,7 +22,7 @@ class Dealer {
     }
 
     public boolean gotBlackjack() {
-        if (hand.getHandsValue() == 21) {
+        if (hand.getHandsValue() == 21 && hand.cardsOnHand.size() == 2) {
             return true;
         } else {
             return false;
@@ -37,13 +37,17 @@ class Dealer {
         return hand.cardsOnHand.get(0).getRank() == Card.Rank.ACE;
     }
 
-    void clearMyHand(){
-        hand.clear();
-    }
+    boolean busted(){ return hand.getHandsValue() > 21;}
+
+    void clearMyHand(){ hand.clear(); }
 
     void begin(){
         hit();
         hit();
+    }
+
+    void ending(){
+        clearMyHand();
     }
 
     //void for testing
@@ -52,7 +56,7 @@ class Dealer {
             System.out.println(hand.cardsOnHand.get(i));
     }
 
-    //void for testing
+
     public int myValue(){
         return hand.getHandsValue();
     }

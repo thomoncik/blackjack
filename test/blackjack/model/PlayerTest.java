@@ -10,6 +10,34 @@ import static org.junit.Assert.*;
 public class PlayerTest {
 
     @Test
+    public void ending() throws Exception {
+        TableProvider tworound = new TableProvider("tworounds");
+
+        assertTrue(tworound.getDealer().gotBlackjack());
+        assertTrue(tworound.getPlayer().ifCanInsurance());
+
+        tworound.getPlayer().setBet(200);
+        tworound.getPlayer().insurance();
+        tworound.getPlayer().stand();
+        tworound.getPlayer().ending();
+
+        assertEquals(1000,tworound.getPlayer().myBank());
+
+        tworound.getPlayer().begin();
+
+        tworound.getPlayer().setBet(300);
+        tworound.getPlayer().hit();
+        tworound.getPlayer().stand();
+
+        assertEquals(19,tworound.getPlayer().myValue());
+        assertEquals(17,tworound.getDealer().myValue());
+
+        tworound.getPlayer().ending();
+
+        assertEquals(1300, tworound.getPlayer().myBank());
+    }
+
+    @Test
     public void isSplitted() throws Exception {
     }
 

@@ -83,6 +83,18 @@ public class DeckProvider extends Deck{
             cards[3] = new Card(Card.Suit.DIAMONDS,Card.Rank.TWO);
             cards[4] = new Card(Card.Suit.DIAMONDS, Card.Rank.ACE);
             cards[5] = new Card(Card.Suit.CLUBS,Card.Rank.ACE);
+        }else if(s.equals("tworounds")){
+            DECK_SIZE = 8;
+            cards = new Card[DECK_SIZE];
+            Card.Suit suit = Card.Suit.HEARTS;
+            cards[0] = new Card(Card.Suit.CLUBS,Card.Rank.TWO);
+            cards[1] = new Card(Card.Suit.SPADES,Card.Rank.ACE);
+            cards[2] = new Card(suit,Card.Rank.QUEEN);
+            cards[3] = new Card(Card.Suit.DIAMONDS,Card.Rank.KING);
+            cards[4] = new Card(Card.Suit.DIAMONDS, Card.Rank.ACE);
+            cards[5] = new Card(Card.Suit.CLUBS,Card.Rank.ACE);
+            cards[6] = new Card(suit,Card.Rank.NINE);
+            cards[7] = new Card(suit,Card.Rank.FIVE);
         }
     }
 

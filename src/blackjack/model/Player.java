@@ -16,6 +16,7 @@ public class Player {
     private Deck deck;
     private Dealer dealer;
     private boolean insured;
+    private boolean busted;
 
     public Player(Deck d) {
         hand = new Hand();
@@ -26,6 +27,7 @@ public class Player {
         bet = 0;
         splitBet = 0;
         insuranceBet = 0;
+        busted = false;
     }
 
     public Hand getHand(){
@@ -89,7 +91,10 @@ public class Player {
     }
 
     public void stand() {
-        dealerTurn();
+        if(hand.getHandsValue()<=21)
+            dealerTurn();
+        else
+            busted = true;
     }
 
     public void doubleDown() {
@@ -107,7 +112,6 @@ public class Player {
     }
 
     public void insurance() {
-        bank -= bet / 2;
         insuranceBet = bet / 2;
         insured = true;
     }
@@ -120,10 +124,48 @@ public class Player {
 
     void clearMyHand(){
         hand.clear();
+        bet = 0;
+        splitBet = 0;
+        insuranceBet = 0;
+        insured = false;
     }
 
     void begin(){
         hit();
+        dealer.begin();
+    }
+
+    void ending() {
+        if (!busted) {
+            if (dealer.busted()) {
+                bank += 2 * (bet + splitBet);
+            } else if (!isSplitted()) {
+                if (dealer.myValue() < myValue()) {
+                    bank += 2 * bet;
+                } else if (dealer.myValue() == myValue()) {
+                    bank += bet;
+                }
+            } else {
+                if (dealer.myValue() < myValue()) {
+                    bank += 2 * bet;
+                } else if (dealer.myValue() == myValue()) {
+                    bank += bet;
+                }
+
+                if (dealer.myValue() < splitHand.getHandsValue()) {
+                    bank += 2 * splitBet;
+                } else if (dealer.myValue() == splitHand.getHandsValue()) {
+                    bank += splitBet;
+                }
+            }
+        }
+
+        if (insured && dealer.gotBlackjack()) {
+            bank += 2*insuranceBet;
+        }
+
+        dealer.clearMyHand();
+        clearMyHand();
     }
 
     //void for testing
@@ -133,6 +175,10 @@ public class Player {
     }
 
     //void for testing
+    public int myBank(){
+        return bank;
+    }
+
     public int myValue(){
         return hand.getHandsValue();
     }
