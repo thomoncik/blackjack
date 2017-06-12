@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../css/menu.css" alignment="center" hgap="10"
-          prefHeight="667.0" prefWidth="375.0"
-          vgap="10" xmlns="http://javafx.com/javafx/8.0.112" fx:controller="blackjack.controller.GameController">
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" prefHeight="667.0" prefWidth="375.0"
+          stylesheets="@../css/menu.css" vgap="10" xmlns="http://javafx.com/javafx/8.0.131"
+          fx:controller="blackjack.controller.GameController">
     <columnConstraints>
         <ColumnConstraints/>
     </columnConstraints>
@@ -25,17 +25,17 @@
 
         <Label fx:id="printBet" layoutX="30" layoutY="600" prefHeight="40" prefWidth="120"/>
 
-        <ImageView fx:id="playerFirstCard" layoutX="100" layoutY="467" fitHeight="128" preserveRatio="true">
-            <Image url="file:/home/tomek/Dokumenty/Programowanie/blackjack/img/cards/2_of_spades.png"/>
+        <ImageView fx:id="playerFirstCard" fitHeight="128" layoutX="120" layoutY="467" preserveRatio="true">
+            <Image url="file:img/cards/back_of_card.jpg"/>
         </ImageView>
-        <ImageView fx:id="playerSecondCard" layoutX="275" layoutY="467" fitHeight="128" preserveRatio="true">
-            <Image url="file:/home/tomek/Dokumenty/Programowanie/blackjack/img/cards/ace_of_spades.png"/>
+        <ImageView fx:id="playerSecondCard" fitHeight="128" layoutX="184" layoutY="467" preserveRatio="true">
+            <Image url="file:img/cards/back_of_card.jpg"/>
         </ImageView>
-        <ImageView fx:id="dealerFirstCard" layoutX="100" layoutY="167" fitHeight="128" preserveRatio="true">
-            <Image url="file:/home/tomek/Dokumenty/Programowanie/blackjack/img/cards/6_of_hearts.png"/>
+        <ImageView fx:id="dealerFirstCard" fitHeight="128" layoutX="120" layoutY="167" preserveRatio="true">
+            <Image url="file:img/cards/back_of_card.jpg"/>
         </ImageView>
-        <ImageView fx:id="dealerSecondCard" layoutX="275" layoutY="167" fitHeight="128" preserveRatio="true">
-            <Image url="file:/home/tomek/Dokumenty/Programowanie/blackjack/img/cards/9_of_diamonds.png"/>
+        <ImageView fx:id="dealerSecondCard" fitHeight="128" layoutX="184" layoutY="167" preserveRatio="true">
+            <Image url="file:img/cards/back_of_card.jpg"/>
         </ImageView>
     </AnchorPane>
 </GridPane>
