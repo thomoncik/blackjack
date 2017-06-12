@@ -1,8 +1,10 @@
 package blackjack.controller;
 
+import blackjack.AssetManager;
 import blackjack.GameState;
 import blackjack.MenuState;
 import blackjack.StateManager;
+import blackjack.model.Card;
 import blackjack.model.Table;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -57,7 +59,7 @@ public class GameController implements Initializable {
                         bet = ((GameState) StateManager.getInstance().getCurrentState()).getBet();
                         printBet.setText("YOUR CASH " + bet + "$");
                         table = new Table();
-//                        playerFirstCard.setImage(AssetManager.getInstance().getAsset(new Card(Card.Suit.HEARTS, Card.Rank.ACE).toString()));
+                       playerFirstCard.setImage(AssetManager.getInstance().getAsset(new Card(Card.Suit.HEARTS, Card.Rank.ACE).toString()));
                     });
                 }
                 try {
