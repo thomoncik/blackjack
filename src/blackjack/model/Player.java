@@ -132,7 +132,7 @@ public class Player {
         dealer.begin();
     }
 
-    void ending() {
+    void actualizeBank(){
         if (!busted) {
             if (dealer.busted()) {
                 bank += 2 * (bet + splitBet);
@@ -160,6 +160,10 @@ public class Player {
         if (insured && dealer.gotBlackjack()) {
             bank += 2*insuranceBet;
         }
+    }
+
+    void ending() {
+        actualizeBank();
 
         dealer.clearMyHand();
         clearMyHand();

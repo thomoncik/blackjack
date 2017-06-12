@@ -1,6 +1,5 @@
 package blackjack.controller;
 
-import blackjack.AssetManager;
 import blackjack.GameState;
 import blackjack.MenuState;
 import blackjack.StateManager;
