@@ -8,6 +8,7 @@ import blackjack.model.Table;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -21,6 +22,16 @@ import java.util.ResourceBundle;
  */
 public class GameController implements Initializable {
     @FXML
+    public Button splitButton;
+    @FXML
+    public Button doubleButton;
+    @FXML
+    public Button hitButton;
+    @FXML
+    public Button standButton;
+    @FXML
+    public Button insuranceButton;
+    @FXML
     AnchorPane anchorPane;
     @FXML
     javafx.scene.image.ImageView playerFirstCard;
@@ -30,10 +41,9 @@ public class GameController implements Initializable {
     javafx.scene.image.ImageView dealerFirstCard;
     @FXML
     javafx.scene.image.ImageView dealerSecondCard;
-    private int bet;
     @FXML
-    javafx.scene.control.Label printBet = new Label("YOUR CASH " + bet + "$");
-    private Table table;
+    javafx.scene.control.Label printBet = new Label("BET");
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,6 +53,26 @@ public class GameController implements Initializable {
 
     public void enterMenu(MouseEvent mouseEvent) {
         StateManager.getInstance().setCurrentState(new MenuState((Stage) anchorPane.getScene().getWindow()));
+    }
+
+    public void splitAction(MouseEvent mouseEvent) {
+        ((GameState) StateManager.getInstance().getCurrentState()).getTable().getPlayer().split();
+    }
+
+    public void doubleAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void hitAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void standAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void buyInsuranceAction(MouseEvent mouseEvent) {
+
     }
 
     class DataUpdater extends Thread {
@@ -55,11 +85,16 @@ public class GameController implements Initializable {
             while (true) {
                 if (StateManager.getInstance().getCurrentState() instanceof GameState) {
                     Platform.runLater(() -> {
-                        bet = ((GameState) StateManager.getInstance().getCurrentState()).getBet();
-                        printBet.setText("YOUR CASH " + bet + "$");
-                        table = (table == null) ? new Table() : table;
-                        playerFirstCard.setImage(AssetManager.getInstance().getAsset(table.getPlayer().getHand().getIthCard(0).toString()));
-                        dealerFirstCard.setImage(AssetManager.getInstance().getAsset(table.getDealer().getHand().getIthCard(0).toString()));
+                        int bet = ((GameState) StateManager.getInstance().getCurrentState()).getBet();
+                        Table table = ((GameState) StateManager.getInstance().getCurrentState()).getTable();
+
+                        printBet.setText("BET " + bet + "$");
+                        playerFirstCard.setImage(AssetManager.getInstance().getAsset(table.getPlayer().getHand().getCardByIndex(0).toString()));
+                        dealerFirstCard.setImage(AssetManager.getInstance().getAsset(table.getDealer().getHand().getCardByIndex(0).toString()));
+
+                        splitButton.setVisible(table.getPlayer().canSplit());
+                        doubleButton.setVisible(table.getPlayer().canDoubleDown());
+                        insuranceButton.setVisible(table.getPlayer().canBuyInsurance());
                     });
                 }
                 try {

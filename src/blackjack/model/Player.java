@@ -68,7 +68,7 @@ public class Player {
         return true;
     }
 
-    public boolean ifCanInsurance() {
+    public boolean canBuyInsurance() {
         if(insured)
             return false;
 
@@ -132,7 +132,7 @@ public class Player {
         dealer.begin();
     }
 
-    void actualizeBank(){
+    private void actualizeBank() {
         if (!busted) {
             if (dealer.busted()) {
                 bank += 2 * (bet + splitBet);

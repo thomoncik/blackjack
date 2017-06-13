@@ -22,10 +22,17 @@
         <Button layoutX="50.5" layoutY="67.0" mnemonicParsing="false" onMouseClicked="#enterMenu" prefHeight="56.0"
                 prefWidth="68.0" text="Wróć"/>
 
-        <Button layoutY="228" layoutX="32.0" prefHeight="64.0" prefWidth="64.0" text="Split"/>
-        <Button layoutY="312" layoutX="32.0" prefHeight="64.0" prefWidth="64.0" text="Double"/>
-        <Button layoutY="386" layoutX="32.0" prefHeight="64.0" prefWidth="64.0" text="Hit"/>
-        <Button layoutY="460" layoutX="32.0" prefHeight="64.0" prefWidth="64.0" text="Stand"/>
+        <Button fx:id="splitButton" layoutY="228" layoutX="32.0" prefHeight="64.0" prefWidth="64.0"
+                onMouseClicked="#splitAction" text="Split"/>
+        <Button fx:id="doubleButton" layoutY="312" layoutX="32.0" prefHeight="64.0" prefWidth="64.0"
+                onMouseClicked="#doubleAction" text="Double"/>
+        <Button fx:id="hitButton" layoutY="386" layoutX="32.0" prefHeight="64.0" prefWidth="64.0"
+                onMouseClicked="#hitAction" text="Hit"/>
+        <Button fx:id="standButton" layoutY="460" layoutX="32.0" prefHeight="64.0" prefWidth="64.0"
+                onMouseClicked="#standAction" text="Stand"/>
+
+        <Button fx:id="insuranceButton" layoutY="312" layoutX="200.0" prefHeight="64.0" prefWidth="64.0"
+                onMouseClicked="#buyInsuranceAction" text="Insurance"/>
 
         <Label fx:id="printBet" layoutX="30" layoutY="600" prefHeight="40" prefWidth="120"/>
 

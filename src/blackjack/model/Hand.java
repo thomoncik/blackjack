@@ -24,7 +24,7 @@ public class Hand {
         sumOfValues = 0;
     }
 
-    public Card getIthCard(int i){
+    public Card getCardByIndex(int i) {
         return cardsOnHand.get(i);
     }
 

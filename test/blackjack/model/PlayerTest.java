@@ -14,7 +14,7 @@ public class PlayerTest {
         TableProvider tworound = new TableProvider("tworounds");
 
         assertTrue(tworound.getDealer().gotBlackjack());
-        assertTrue(tworound.getPlayer().ifCanInsurance());
+        assertTrue(tworound.getPlayer().canBuyInsurance());
 
         tworound.getPlayer().setBet(200);
         tworound.getPlayer().insurance();
@@ -94,20 +94,20 @@ public class PlayerTest {
         TableProvider insurance = new TableProvider("insurance");
         TableProvider falseInsurance = new TableProvider("falseInsurance");
 
-        assertTrue(insurance.getPlayer().ifCanInsurance());
-        assertFalse(falseInsurance.getPlayer().ifCanInsurance());
+        assertTrue(insurance.getPlayer().canBuyInsurance());
+        assertFalse(falseInsurance.getPlayer().canBuyInsurance());
 
         insurance.getPlayer().insurance();
 
-        assertFalse(insurance.getPlayer().ifCanInsurance());
+        assertFalse(insurance.getPlayer().canBuyInsurance());
 
         insurance = new TableProvider("insurance");
 
-        assertTrue(insurance.getPlayer().ifCanInsurance());
+        assertTrue(insurance.getPlayer().canBuyInsurance());
 
         insurance.getPlayer().setBet(750);
 
-        assertFalse(insurance.getPlayer().ifCanInsurance());
+        assertFalse(insurance.getPlayer().canBuyInsurance());
     }
 
     @Test
