@@ -28,7 +28,11 @@ public class Hand {
         return cardsOnHand.get(i);
     }
 
-    int getHandsValue() {
+    public ArrayList<Card> getCards() {
+        return cardsOnHand;
+    }
+
+    int getValue() {
         return sumOfValues;
     }
 

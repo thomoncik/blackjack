@@ -1,16 +1,13 @@
 package blackjack.controller;
 
-import blackjack.AssetManager;
-import blackjack.GameState;
-import blackjack.MenuState;
-import blackjack.StateManager;
+import blackjack.*;
+import blackjack.model.Card;
 import blackjack.model.Table;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -32,6 +29,8 @@ public class GameController implements Initializable {
     @FXML
     public Button insuranceButton;
     @FXML
+    public Label playerHandValue;
+    @FXML
     AnchorPane anchorPane;
     @FXML
     javafx.scene.image.ImageView playerFirstCard;
@@ -51,28 +50,28 @@ public class GameController implements Initializable {
         dataUpdater.start();
     }
 
-    public void enterMenu(MouseEvent mouseEvent) {
+    public void enterMenu() {
         StateManager.getInstance().setCurrentState(new MenuState((Stage) anchorPane.getScene().getWindow()));
     }
 
-    public void splitAction(MouseEvent mouseEvent) {
+    public void splitAction() {
         ((GameState) StateManager.getInstance().getCurrentState()).getTable().getPlayer().split();
     }
 
-    public void doubleAction(MouseEvent mouseEvent) {
-
+    public void doubleAction() {
+        ((GameState) StateManager.getInstance().getCurrentState()).getTable().getPlayer().doubleDown();
     }
 
-    public void hitAction(MouseEvent mouseEvent) {
-
+    public void hitAction() {
+        ((GameState) StateManager.getInstance().getCurrentState()).getTable().getPlayer().hit();
     }
 
-    public void standAction(MouseEvent mouseEvent) {
-
+    public void standAction() {
+        ((GameState) StateManager.getInstance().getCurrentState()).getTable().getPlayer().stand();
     }
 
-    public void buyInsuranceAction(MouseEvent mouseEvent) {
-
+    public void buyInsuranceAction() {
+        ((GameState) StateManager.getInstance().getCurrentState()).getTable().getPlayer().insurance();
     }
 
     class DataUpdater extends Thread {
@@ -85,20 +84,44 @@ public class GameController implements Initializable {
             while (true) {
                 if (StateManager.getInstance().getCurrentState() instanceof GameState) {
                     Platform.runLater(() -> {
-                        int bet = ((GameState) StateManager.getInstance().getCurrentState()).getBet();
-                        Table table = ((GameState) StateManager.getInstance().getCurrentState()).getTable();
+                        if (!(StateManager.getInstance().getCurrentState() instanceof GameState)) {
+                            return;
+                        }
+
+                        GameState state = (GameState) StateManager.getInstance().getCurrentState();
+
+                        int bet = state.getBet();
+                        Table table = state.getTable();
+                        int handValue = table.getPlayer().getValue();
 
                         printBet.setText("BET " + bet + "$");
-                        playerFirstCard.setImage(AssetManager.getInstance().getAsset(table.getPlayer().getHand().getCardByIndex(0).toString()));
-                        dealerFirstCard.setImage(AssetManager.getInstance().getAsset(table.getDealer().getHand().getCardByIndex(0).toString()));
+                        playerHandValue.setText(handValue + "");
+
+                        Card lastPlayerCard = table.getPlayer().getHand().getCards().get(table.getPlayer().getHand().getCards().size() - 1);
+                        playerFirstCard.setImage(AssetManager.getInstance().getAsset(lastPlayerCard.toString()));
+
+                        Card lastDealerCard = table.getDealer().getHand().getCards().get(table.getDealer().getHand().getCards().size() - 1);
+                        dealerFirstCard.setImage(AssetManager.getInstance().getAsset(lastDealerCard.toString()));
 
                         splitButton.setVisible(table.getPlayer().canSplit());
                         doubleButton.setVisible(table.getPlayer().canDoubleDown());
-                        insuranceButton.setVisible(table.getPlayer().canBuyInsurance());
+                        insuranceButton.setVisible(table.canBuyInsurance());
+
+                        if (table.isDealerRound()) {
+                            table.getDealer().hit();
+                            lastDealerCard = table.getDealer().getHand().getCards().get(table.getDealer().getHand().getCards().size() - 1);
+                            dealerFirstCard.setImage(AssetManager.getInstance().getAsset(lastDealerCard.toString()));
+                            return;
+                        }
+
+                        if (!table.isDealerRound() && !table.isPlayerRound()) {
+                            System.out.println(table.getDealer().myValue() + ", " + table.getPlayer().getValue());
+                            StateManager.getInstance().setCurrentState(new BettingState((Stage) anchorPane.getScene().getWindow()));
+                        }
                     });
                 }
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

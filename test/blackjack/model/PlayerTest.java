@@ -14,27 +14,27 @@ public class PlayerTest {
         TableProvider tworound = new TableProvider("tworounds");
 
         assertTrue(tworound.getDealer().gotBlackjack());
-        assertTrue(tworound.getPlayer().canBuyInsurance());
+        assertTrue(tworound.canBuyInsurance());
 
         tworound.getPlayer().setBet(200);
         tworound.getPlayer().insurance();
         tworound.getPlayer().stand();
-        tworound.getPlayer().ending();
+//        tworound.getPlayer().ending();
 
-        assertEquals(1000,tworound.getPlayer().myBank());
+        assertEquals(1000, tworound.getPlayer().getBank());
 
-        tworound.getPlayer().begin();
+//        tworound.getPlayer().begin();
 
         tworound.getPlayer().setBet(300);
         tworound.getPlayer().hit();
         tworound.getPlayer().stand();
 
-        assertEquals(19,tworound.getPlayer().myValue());
+        assertEquals(19, tworound.getPlayer().getValue());
         assertEquals(17,tworound.getDealer().myValue());
 
-        tworound.getPlayer().ending();
+//        tworound.getPlayer().ending();
 
-        assertEquals(1300, tworound.getPlayer().myBank());
+        assertEquals(1300, tworound.getPlayer().getBank());
     }
 
     @Test
@@ -94,20 +94,20 @@ public class PlayerTest {
         TableProvider insurance = new TableProvider("insurance");
         TableProvider falseInsurance = new TableProvider("falseInsurance");
 
-        assertTrue(insurance.getPlayer().canBuyInsurance());
-        assertFalse(falseInsurance.getPlayer().canBuyInsurance());
+        assertTrue(insurance.canBuyInsurance());
+        assertFalse(falseInsurance.canBuyInsurance());
 
         insurance.getPlayer().insurance();
 
-        assertFalse(insurance.getPlayer().canBuyInsurance());
+        assertFalse(insurance.canBuyInsurance());
 
         insurance = new TableProvider("insurance");
 
-        assertTrue(insurance.getPlayer().canBuyInsurance());
+        assertTrue(insurance.canBuyInsurance());
 
         insurance.getPlayer().setBet(750);
 
-        assertFalse(insurance.getPlayer().canBuyInsurance());
+        assertFalse(insurance.canBuyInsurance());
     }
 
     @Test
@@ -138,20 +138,20 @@ public class PlayerTest {
     public void clearMyHand() throws Exception {
         Table table = new Table();
 
-        assertTrue(table.getPlayer().myValue() > 0);
+        assertTrue(table.getPlayer().getValue() > 0);
 
         table.getPlayer().clearMyHand();
 
-        assertTrue(table.getPlayer().myValue() == 0);
+        assertTrue(table.getPlayer().getValue() == 0);
     }
 
     @Test
     public void begin() throws Exception {
         Table table = new Table();
         table.getPlayer().clearMyHand();
-        table.getPlayer().begin();
+//        table.getPlayer().begin();
 
-        assertTrue(table.getPlayer().myValue() > 0 && table.getPlayer().myValue() < 12);
+        assertTrue(table.getPlayer().getValue() > 0 && table.getPlayer().getValue() < 12);
     }
 
     @Test
@@ -163,10 +163,10 @@ public class PlayerTest {
         TableProvider aces = new TableProvider("aces");
 
         aces.getPlayer().hit();
-        assertEquals(12,aces.getPlayer().myValue());
+        assertEquals(12, aces.getPlayer().getValue());
 
         aces.getPlayer().hit();
-        assertEquals(13,aces.getPlayer().myValue());
+        assertEquals(13, aces.getPlayer().getValue());
     }
 
 }

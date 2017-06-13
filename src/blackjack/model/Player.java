@@ -8,36 +8,37 @@ public class Player {
     private Hand splitHand;
     private int bank;
     private int bet;
-    private int splitBet;
     private int insuranceBet;
     private Deck deck;
-    private Dealer dealer;
     private boolean insured;
-    private boolean busted;
+    private boolean duringRound;
 
-    public Player(Deck d) {
-        hand = new Hand();
-        deck = d;
+    public Player(Deck deck) {
+        this.duringRound = true;
+        this.insured = false;
+        this.splitHand = null;
+
+        this.hand = new Hand();
+        this.deck = deck;
+
         hit();
-        splitHand = null;
-        bank = 1000;
-        bet = 0;
-        splitBet = 0;
-        insuranceBet = 0;
-        busted = false;
+
+        this.bank = 1000;
+        this.bet = 0;
+        this.insuranceBet = 0;
     }
 
-    public Hand getHand(){
+    public Hand getHand() {
         return hand;
     }
 
-    void setDealer(Dealer d){
-        dealer = d;
+    public int getBet() {
+        return this.bet;
     }
 
-    public void setBet(int i){
-        bet += i;
-        bank -= i;
+    public void setBet(int bet) {
+        this.bet += bet;
+        this.bank -= bet;
     }
 
     public boolean isSplitted() {
@@ -45,13 +46,13 @@ public class Player {
     }
 
     public boolean canSplit() {
-        if (hand.cardsOnHand.size() != 2) {
+        if (this.hand.cardsOnHand.size() != 2) {
             return false;
         } else if (!hand.cardsOnHand.get(0).getValue()[0].equals(hand.cardsOnHand.get(1).getValue()[0])) {
             return false;
-        } else if(bet > bank) {
+        } else if (bet > bank) {
             return false;
-        }else if(isSplitted()) {
+        } else if (isSplitted()) {
             return false;
         }
 
@@ -68,30 +69,16 @@ public class Player {
         return true;
     }
 
-    public boolean canBuyInsurance() {
-        if(insured)
-            return false;
-
-        if (bet / 2 > bank) {
-            return false;
-        }
-
-        return dealer.gotAceOnFace();
-    }
-
     public void hit() {
         hand.addCard(deck.getNextCard());
 
-        if(hand.getHandsValue() > 21) {
-            stand();
+        if (hand.getValue() > 21) {
+            duringRound = false;
         }
     }
 
     public void stand() {
-        if(hand.getHandsValue()<=21)
-            dealerTurn();
-        else
-            busted = true;
+        duringRound = false;
     }
 
     public void doubleDown() {
@@ -104,8 +91,8 @@ public class Player {
         splitHand = new Hand();
         splitHand.addCard(hand.cardsOnHand.get(1));
         hand.cardsOnHand.remove(1);
-        splitBet += bet;
         bank -= bet;
+        bet += bet;
     }
 
     public void insurance() {
@@ -113,69 +100,46 @@ public class Player {
         insured = true;
     }
 
-    public void dealerTurn(){
-        while(dealer.canTakeCard()){
-            dealer.hit();
-        }
-    }
-
-    void clearMyHand(){
+    void clearMyHand() {
         hand.clear();
         bet = 0;
-        splitBet = 0;
         insuranceBet = 0;
         insured = false;
     }
 
-    void begin(){
-        hit();
-        dealer.begin();
-    }
-
-    private void actualizeBank() {
-        if (!busted) {
-            if (dealer.busted()) {
-                bank += 2 * (bet + splitBet);
-            } else if (!isSplitted()) {
-                if (dealer.myValue() < myValue()) {
-                    bank += 2 * bet;
-                } else if (dealer.myValue() == myValue()) {
-                    bank += bet;
-                }
-            } else {
-                if (dealer.myValue() < myValue()) {
-                    bank += 2 * bet;
-                } else if (dealer.myValue() == myValue()) {
-                    bank += bet;
-                }
-
-                if (dealer.myValue() < splitHand.getHandsValue()) {
-                    bank += 2 * splitBet;
-                } else if (dealer.myValue() == splitHand.getHandsValue()) {
-                    bank += splitBet;
-                }
-            }
-        }
-
-        if (insured && dealer.gotBlackjack()) {
-            bank += 2*insuranceBet;
-        }
-    }
-
-    void ending() {
-        actualizeBank();
-
-        dealer.clearMyHand();
-        clearMyHand();
-    }
-
-    //void for testing
-    public int myBank(){
+    public int getBank() {
         return bank;
     }
 
-    public int myValue(){
-        return hand.getHandsValue();
+    public void setBank() {
+        this.bank = bank;
     }
 
+    public int getValue() {
+        return hand.getValue();
+    }
+
+    public boolean busted() {
+        return this.hand.getValue() > 21;
+    }
+
+    public int getInsuranceBet() {
+        return insuranceBet;
+    }
+
+    public void setInsuranceBet(int insuranceBet) {
+        this.insuranceBet = insuranceBet;
+    }
+
+    public boolean isInsured() {
+        return insured;
+    }
+
+    public void setInsured(boolean insured) {
+        this.insured = insured;
+    }
+
+    public boolean isDuringRound() {
+        return duringRound;
+    }
 }

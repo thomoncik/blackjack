@@ -14,7 +14,7 @@ public class Dealer {
     }
 
     public boolean canTakeCard() {
-        if (hand.getHandsValue() <= 16) {
+        if (hand.getValue() <= 16) {
             return true;
         } else {
             return false;
@@ -22,7 +22,7 @@ public class Dealer {
     }
 
     public boolean gotBlackjack() {
-        if (hand.getHandsValue() == 21 && hand.cardsOnHand.size() == 2) {
+        if (hand.getValue() == 21 && hand.cardsOnHand.size() == 2) {
             return true;
         } else {
             return false;
@@ -38,7 +38,7 @@ public class Dealer {
     }
 
     boolean busted() {
-        return hand.getHandsValue() > 21;
+        return hand.getValue() > 21;
     }
 
     void clearMyHand() {
@@ -60,6 +60,6 @@ public class Dealer {
 
 
     public int myValue() {
-        return hand.getHandsValue();
+        return hand.getValue();
     }
 }
