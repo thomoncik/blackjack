@@ -27,5 +27,8 @@
             <Button layoutX="68.0" layoutY="544.0" mnemonicParsing="false" onMouseClicked="#exit"
                     prefHeight="48.0" prefWidth="256.0" text="QUIT"/>
         </Pane>
+        <ImageView fx:id="symbols" layoutX="125" layoutY="625" preserveRatio="true">
+            <Image url="file:img/img-symb.png"/>
+        </ImageView>
     </AnchorPane>
 </GridPane>
