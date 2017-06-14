@@ -36,16 +36,15 @@ public class GameController implements Initializable {
     public AnchorPane endingPane;
     public Label dealerValue;
     public Label playerValue;
+    public Label dealerWon;
+    public Label playerWon;
+    public Label dealerHandValue;
     @FXML
     AnchorPane anchorPane;
     @FXML
     javafx.scene.image.ImageView playerFirstCard;
     @FXML
-    javafx.scene.image.ImageView playerSecondCard;
-    @FXML
     javafx.scene.image.ImageView dealerFirstCard;
-    @FXML
-    javafx.scene.image.ImageView dealerSecondCard;
     @FXML
     javafx.scene.control.Label printBet = new Label("BET");
 
@@ -108,12 +107,20 @@ public class GameController implements Initializable {
                         boolean end = !table.isDealerRound() && !table.isPlayerRound();
                         anchorPane.setVisible(!end);
                         endingPane.setVisible(end);
+                        dealerWon.setVisible(!table.playerWon());
+                        playerWon.setVisible(table.playerWon());
 
                         playerValue.setText("Player: " + handValue);
                         dealerValue.setText("Dealer: " + table.getDealer().getValue());
 
                         printBet.setText("BET " + bet + "$");
                         playerHandValue.setText(handValue + "");
+
+                        int dealerValue = table.getDealer().getHand().getCardByIndex(0).getValue()[0];
+                        if (table.isDealerRound()) {
+                            dealerValue = table.getDealer().getValue();
+                        }
+                        dealerHandValue.setText(dealerValue + "");
 
                         Card lastPlayerCard = table.getPlayer().getHand().getCards().get(table.getPlayer().getHand().getCards().size() - 1);
                         playerFirstCard.setImage(AssetManager.getInstance().getAsset(lastPlayerCard.toString()));

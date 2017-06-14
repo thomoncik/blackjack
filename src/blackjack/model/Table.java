@@ -38,6 +38,14 @@ public class Table {
         return !isPlayerRound() && dealer.canTakeCard();
     }
 
+    public boolean playerWon() {
+        if (player.busted()) {
+            return false;
+        }
+        return dealer.busted() || player.getValue() > dealer.getValue();
+
+    }
+
     public void endRound() {
         if (!player.busted() && dealer.busted()) {
             player.setBank(2 * player.getBet() + player.getBank());
