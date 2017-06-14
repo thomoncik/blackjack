@@ -35,7 +35,9 @@ public class GameState implements State {
 
     @Override
     public void onEnter() {
-//        this.table = new Table();
+        this.table.getPlayer().setDuringRound(true);
+        this.table.getDealer().begin();
+        this.table.getPlayer().hit();
     }
 
     @Override

@@ -20,8 +20,6 @@ public class Player {
         this.hand = new Hand();
         this.deck = deck;
 
-        hit();
-
         this.bank = 1000;
         this.bet = 0;
     }
@@ -127,5 +125,9 @@ public class Player {
 
     public boolean isDuringRound() {
         return duringRound;
+    }
+
+    public void setDuringRound(boolean duringRound) {
+        this.duringRound = duringRound;
     }
 }

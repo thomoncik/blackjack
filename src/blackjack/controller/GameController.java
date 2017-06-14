@@ -119,6 +119,9 @@ public class GameController implements Initializable {
                         playerFirstCard.setImage(AssetManager.getInstance().getAsset(lastPlayerCard.toString()));
 
                         Card lastDealerCard = table.getDealer().getHand().getCards().get(table.getDealer().getHand().getCards().size() - 1);
+                        if (table.isPlayerRound()) {
+                            lastDealerCard = table.getDealer().getHand().getCardByIndex(0);
+                        }
                         dealerFirstCard.setImage(AssetManager.getInstance().getAsset(lastDealerCard.toString()));
 
                         splitButton.setVisible(table.getPlayer().canSplit());

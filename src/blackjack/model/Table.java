@@ -41,9 +41,11 @@ public class Table {
     public void endRound() {
         if (!player.busted() && dealer.busted()) {
             player.setBank(2 * player.getBet() + player.getBank());
-        }
-
-        if (player.isInsured() && dealer.gotBlackjack()) {
+        } else if (!player.busted() && !dealer.busted() && player.getValue() > dealer.getValue()) {
+            player.setBank(player.getBank() + 2 * player.getBet());
+        } else if (!player.busted() && !dealer.busted() && player.getValue() == dealer.getValue()) {
+            player.setBank(player.getBank() + player.getBet());
+        } else if (player.isInsured() && dealer.gotBlackjack()) {
             player.setBank(player.getBank() + player.getBet());
         }
 

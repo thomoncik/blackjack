@@ -70,9 +70,7 @@ public class Card {
     }
 
     public String toString() {
-        String str;
-        str = rank + "_of_" + suit;
-        return str.toLowerCase();
+        return (rank + "_of_" + suit).toLowerCase();
     }
 
     public enum Rank {

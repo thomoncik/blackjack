@@ -10,7 +10,6 @@ public class Dealer {
     Dealer(Deck d) {
         hand = new Hand();
         deck = d;
-        begin();
     }
 
     public boolean canTakeCard() {
@@ -45,13 +44,9 @@ public class Dealer {
         hand.clear();
     }
 
-    void begin() {
+    public void begin() {
         hit();
         hit();
-    }
-
-    void ending() {
-        clearHand();
     }
 
     public Hand getHand() {
