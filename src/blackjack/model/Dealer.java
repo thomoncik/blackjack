@@ -41,7 +41,7 @@ public class Dealer {
         return hand.getValue() > 21;
     }
 
-    void clearMyHand() {
+    void clearHand() {
         hand.clear();
     }
 
@@ -51,7 +51,7 @@ public class Dealer {
     }
 
     void ending() {
-        clearMyHand();
+        clearHand();
     }
 
     public Hand getHand() {
@@ -59,7 +59,7 @@ public class Dealer {
     }
 
 
-    public int myValue() {
+    public int getValue() {
         return hand.getValue();
     }
 }

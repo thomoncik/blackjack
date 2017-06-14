@@ -31,6 +31,12 @@ public class GameController implements Initializable {
     @FXML
     public Label playerHandValue;
     @FXML
+    public Button okButton;
+    @FXML
+    public AnchorPane endingPane;
+    public Label dealerValue;
+    public Label playerValue;
+    @FXML
     AnchorPane anchorPane;
     @FXML
     javafx.scene.image.ImageView playerFirstCard;
@@ -74,6 +80,11 @@ public class GameController implements Initializable {
         ((GameState) StateManager.getInstance().getCurrentState()).getTable().getPlayer().insurance();
     }
 
+    public void okAction() {
+        Table table = ((GameState) StateManager.getInstance().getCurrentState()).getTable();
+        StateManager.getInstance().setCurrentState(new BettingState((Stage) anchorPane.getScene().getWindow(), table));
+    }
+
     class DataUpdater extends Thread {
         DataUpdater() {
             this.setDaemon(true);
@@ -94,6 +105,13 @@ public class GameController implements Initializable {
                         Table table = state.getTable();
                         int handValue = table.getPlayer().getValue();
 
+                        boolean end = !table.isDealerRound() && !table.isPlayerRound();
+                        anchorPane.setVisible(!end);
+                        endingPane.setVisible(end);
+
+                        playerValue.setText("Player: " + handValue);
+                        dealerValue.setText("Dealer: " + table.getDealer().getValue());
+
                         printBet.setText("BET " + bet + "$");
                         playerHandValue.setText(handValue + "");
 
@@ -109,15 +127,9 @@ public class GameController implements Initializable {
 
                         if (table.isDealerRound()) {
                             table.getDealer().hit();
-                            lastDealerCard = table.getDealer().getHand().getCards().get(table.getDealer().getHand().getCards().size() - 1);
-                            dealerFirstCard.setImage(AssetManager.getInstance().getAsset(lastDealerCard.toString()));
-                            return;
+                            System.out.println(lastDealerCard);
                         }
 
-                        if (!table.isDealerRound() && !table.isPlayerRound()) {
-                            System.out.println(table.getDealer().myValue() + ", " + table.getPlayer().getValue());
-                            StateManager.getInstance().setCurrentState(new BettingState((Stage) anchorPane.getScene().getWindow()));
-                        }
                     });
                 }
                 try {

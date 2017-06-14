@@ -30,7 +30,7 @@ public class PlayerTest {
         tworound.getPlayer().stand();
 
         assertEquals(19, tworound.getPlayer().getValue());
-        assertEquals(17,tworound.getDealer().myValue());
+        assertEquals(17, tworound.getDealer().getValue());
 
 //        tworound.getPlayer().ending();
 
@@ -140,7 +140,7 @@ public class PlayerTest {
 
         assertTrue(table.getPlayer().getValue() > 0);
 
-        table.getPlayer().clearMyHand();
+        table.getPlayer().clearHand();
 
         assertTrue(table.getPlayer().getValue() == 0);
     }
@@ -148,7 +148,7 @@ public class PlayerTest {
     @Test
     public void begin() throws Exception {
         Table table = new Table();
-        table.getPlayer().clearMyHand();
+        table.getPlayer().clearHand();
 //        table.getPlayer().begin();
 
         assertTrue(table.getPlayer().getValue() > 0 && table.getPlayer().getValue() < 12);

@@ -26,7 +26,7 @@
 
         <Label fx:id="printBet" layoutX="240" layoutY="600" prefHeight="40" prefWidth="70" text="BET 0$"
                textAlignment="CENTER"/>
-        <Label fx:id="printMyCash" layoutX="80" layoutY="600" prefHeight="40" prefWidth="120" text="YOUR CASH 1000$"/>
+        <Label fx:id="printMyCash" layoutX="40" layoutY="600"/>
 
     </AnchorPane>
 </GridPane>

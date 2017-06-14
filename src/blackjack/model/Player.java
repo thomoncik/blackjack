@@ -37,8 +37,8 @@ public class Player {
     }
 
     public void setBet(int bet) {
-        this.bet += bet;
-        this.bank -= bet;
+        this.bet = bet;
+//        this.bank -= bet;
     }
 
     public boolean isSplitted() {
@@ -100,7 +100,7 @@ public class Player {
         insured = true;
     }
 
-    void clearMyHand() {
+    void clearHand() {
         hand.clear();
         bet = 0;
         insuranceBet = 0;
@@ -111,7 +111,7 @@ public class Player {
         return bank;
     }
 
-    public void setBank() {
+    public void setBank(int bank) {
         this.bank = bank;
     }
 

@@ -16,8 +16,10 @@ public class GameState implements State {
     private int bet;
     private Table table;
 
-    public GameState(Stage primaryStage, int bet) {
+    public GameState(Stage primaryStage, int bet, Table table) {
         this.bet = bet;
+        this.table = table;
+
         stage = primaryStage;
         Parent root = null;
         try {
@@ -33,12 +35,12 @@ public class GameState implements State {
 
     @Override
     public void onEnter() {
-        this.table = new Table();
+//        this.table = new Table();
     }
 
     @Override
     public void onExit() {
-
+        this.table.endRound();
     }
 
     @Override

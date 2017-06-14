@@ -1,5 +1,6 @@
 package blackjack;
 
+import blackjack.model.Table;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,9 +13,12 @@ import java.io.IOException;
  */
 public class BettingState implements State {
     private Stage stage;
+    private Table table;
 
-    public BettingState(Stage primaryStage) {
+    public BettingState(Stage primaryStage, Table table) {
         stage = primaryStage;
+        this.table = table;
+
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("view/fxml/betting.fxml"));
@@ -38,5 +42,9 @@ public class BettingState implements State {
     @Override
     public void run() {
 
+    }
+
+    public Table getTable() {
+        return table;
     }
 }

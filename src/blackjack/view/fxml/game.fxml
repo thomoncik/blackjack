@@ -3,10 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.*?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" prefHeight="667.0" prefWidth="375.0"
           stylesheets="@../css/game.css" vgap="10" xmlns="http://javafx.com/javafx/8.0.131"
           fx:controller="blackjack.controller.GameController">
@@ -38,6 +35,7 @@
         <Button fx:id="insuranceButton" layoutY="312" layoutX="200.0" prefHeight="64.0" prefWidth="64.0"
                 onMouseClicked="#buyInsuranceAction" text="Insurance"/>
 
+
         <Label fx:id="printBet" layoutX="30" layoutY="600" prefHeight="40" prefWidth="120"/>
 
         <ImageView fx:id="playerFirstCard" fitHeight="128" layoutX="120" layoutY="467" preserveRatio="true">
@@ -52,5 +50,12 @@
         <!--<ImageView fx:id="dealerSecondCard" fitHeight="128" layoutX="184" layoutY="167" preserveRatio="true">-->
         <!--<Image url="file:img/cards/back_of_card.jpg"/>-->
         <!--</ImageView>-->
+    </AnchorPane>
+
+    <AnchorPane fx:id="endingPane" prefHeight="667.0" prefWidth="375.0">
+        <Label fx:id="dealerValue" layoutX="50" layoutY="200"/>
+        <Label fx:id="playerValue" layoutX="50" layoutY="500"/>
+        <Button fx:id="okButton" layoutY="312" layoutX="200.0" prefHeight="64.0" prefWidth="64.0"
+                onMouseClicked="#okAction" text="OK"/>
     </AnchorPane>
 </GridPane>

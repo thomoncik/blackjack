@@ -23,11 +23,7 @@ public class Table {
     }
 
     public boolean canBuyInsurance() {
-        if (player.isInsured()) {
-            return false;
-        }
-
-        if (player.getBet() / 2 > player.getBank()) {
+        if (player.isInsured() || (player.getBet() / 2 > player.getBank())) {
             return false;
         }
 
@@ -40,5 +36,18 @@ public class Table {
 
     public boolean isDealerRound() {
         return !isPlayerRound() && dealer.canTakeCard();
+    }
+
+    public void endRound() {
+        if (!player.busted() && dealer.busted()) {
+            player.setBank(2 * player.getBet() + player.getBank());
+        }
+
+        if (player.isInsured() && dealer.gotBlackjack()) {
+            player.setBank(player.getBank() + player.getBet());
+        }
+
+        player.clearHand();
+        dealer.clearHand();
     }
 }

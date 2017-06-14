@@ -21,7 +21,7 @@ public class DealerTest {
         assertTrue(takeCard.getDealer().canTakeCard());
         takeCard.getDealer().hit();
         assertTrue(takeCard.getDealer().canTakeCard());
-        assertEquals(16,takeCard.getDealer().myValue());
+        assertEquals(16, takeCard.getDealer().getValue());
         takeCard.getDealer().hit();
         assertFalse(takeCard.getDealer().canTakeCard());
     }
@@ -50,20 +50,20 @@ public class DealerTest {
     public void clearMyHand() throws Exception {
         Table table = new Table();
 
-        assertTrue(table.getDealer().myValue() > 0);
+        assertTrue(table.getDealer().getValue() > 0);
 
-        table.getDealer().clearMyHand();
+        table.getDealer().clearHand();
 
-        assertTrue(table.getDealer().myValue() == 0);
+        assertTrue(table.getDealer().getValue() == 0);
     }
 
     @Test
     public void begin() throws Exception {
         Table table = new Table();
-        table.getDealer().clearMyHand();
+        table.getDealer().clearHand();
         table.getDealer().begin();
 
-        assertTrue(table.getDealer().myValue() > 3 );
+        assertTrue(table.getDealer().getValue() > 3);
     }
 
     @Test
