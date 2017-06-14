@@ -49,7 +49,7 @@ public class Card {
         return this.suit;
     }
 
-    Integer[] getValue() {
+    public Integer[] getValue() {
         return this.value;
     }
 
