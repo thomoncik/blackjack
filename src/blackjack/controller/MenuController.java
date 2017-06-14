@@ -16,6 +16,7 @@ import javafx.stage.Stage;
  */
 public class MenuController {
     public ImageView title;
+    public ImageView symbols;
     @FXML
     AnchorPane anchorPane;
 
