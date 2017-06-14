@@ -23,6 +23,6 @@
                text="Jan Mełech"/>
 
         <Button layoutX="68.0" layoutY="544.0" mnemonicParsing="false" onMouseClicked="#enterMenu"
-                prefHeight="48.0" prefWidth="256.0" text="Wróć"/>
+                prefHeight="48.0" prefWidth="256.0" text="BACK"/>
     </AnchorPane>
 </GridPane>
