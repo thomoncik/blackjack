@@ -8,7 +8,6 @@ public class Player {
     private Hand splitHand;
     private int bank;
     private int bet;
-    private int insuranceBet;
     private Deck deck;
     private boolean insured;
     private boolean duringRound;
@@ -25,7 +24,6 @@ public class Player {
 
         this.bank = 1000;
         this.bet = 0;
-        this.insuranceBet = 0;
     }
 
     public Hand getHand() {
@@ -38,7 +36,6 @@ public class Player {
 
     public void setBet(int bet) {
         this.bet = bet;
-//        this.bank -= bet;
     }
 
     public boolean isSplitted() {
@@ -56,17 +53,17 @@ public class Player {
             return false;
         }
 
-        return true;
+        return duringRound;
     }
 
     public boolean canDoubleDown() {
         if (bet > bank) {
             return false;
-        } else if (hand.cardsOnHand.size() != 2) {
+        } else if (hand.cardsOnHand.size() != 1) {
             return false;
         }
 
-        return true;
+        return duringRound;
     }
 
     public void hit() {
@@ -85,6 +82,7 @@ public class Player {
         bet *= 2;
         bank -= bet;
         hit();
+        duringRound = false;
     }
 
     public void split() {
@@ -96,14 +94,14 @@ public class Player {
     }
 
     public void insurance() {
-        insuranceBet = bet / 2;
+        bet += bet;
+        bank -= bet;
         insured = true;
     }
 
     void clearHand() {
         hand.clear();
         bet = 0;
-        insuranceBet = 0;
         insured = false;
     }
 
@@ -123,20 +121,8 @@ public class Player {
         return this.hand.getValue() > 21;
     }
 
-    public int getInsuranceBet() {
-        return insuranceBet;
-    }
-
-    public void setInsuranceBet(int insuranceBet) {
-        this.insuranceBet = insuranceBet;
-    }
-
     public boolean isInsured() {
         return insured;
-    }
-
-    public void setInsured(boolean insured) {
-        this.insured = insured;
     }
 
     public boolean isDuringRound() {

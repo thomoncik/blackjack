@@ -8,85 +8,34 @@ import static org.junit.Assert.*;
  * Created by mat_k on 24.05.2017.
  */
 public class PlayerTest {
-
-    @Test
-    public void ending() throws Exception {
-        TableProvider tworound = new TableProvider("tworounds");
-
-        assertTrue(tworound.getDealer().gotBlackjack());
-        assertTrue(tworound.canBuyInsurance());
-
-        tworound.getPlayer().setBet(200);
-        tworound.getPlayer().insurance();
-        tworound.getPlayer().stand();
-//        tworound.getPlayer().ending();
-
-        assertEquals(1000, tworound.getPlayer().getBank());
-
-//        tworound.getPlayer().begin();
-
-        tworound.getPlayer().setBet(300);
-        tworound.getPlayer().hit();
-        tworound.getPlayer().stand();
-
-        assertEquals(19, tworound.getPlayer().getValue());
-        assertEquals(17, tworound.getDealer().getValue());
-
-//        tworound.getPlayer().ending();
-
-        assertEquals(1300, tworound.getPlayer().getBank());
-    }
-
-    @Test
-    public void isSplitted() throws Exception {
-    }
-
     @Test
     public void canSplit() throws Exception {
-        TableProvider split = new TableProvider("split");
-        TableProvider falseSplit = new TableProvider("falseSplit");
+        TableProvider table = new TableProvider("split");
+        assertFalse(table.getPlayer().canSplit()); // for split player needs 2 cards
 
-        assertFalse(split.getPlayer().canSplit());
-        assertFalse(falseSplit.getPlayer().canSplit());
+        table.getPlayer().hit();
+        assertTrue(table.getPlayer().canSplit());
 
-        split.getPlayer().hit();
-        falseSplit.getPlayer().hit();
+        table.getPlayer().split();
+        assertTrue(table.getPlayer().isSplitted());
 
-        assertTrue(split.getPlayer().canSplit());
-        assertFalse(falseSplit.getPlayer().canSplit());
+        table.getPlayer().hit();
+        assertFalse(table.getPlayer().canSplit()); // exactly 2 cards
 
-        split.getPlayer().split();
-        assertTrue(split.getPlayer().isSplitted());
-        assertFalse(split.getPlayer().canSplit());
-
-        split = new TableProvider("split");
-        split.getPlayer().hit();
-        split.getPlayer().hit();
-
-        assertFalse(split.getPlayer().canSplit());
+        table = new TableProvider("falseSplit");
+        table.getPlayer().hit();
+        assertFalse(table.getPlayer().canSplit());
     }
 
     @Test
     public void canDoubleDown() throws Exception {
-        TableProvider doubleDown = new TableProvider("doubleDown");
+        TableProvider table = new TableProvider("doubleDown");
+        assertTrue(table.getPlayer().canDoubleDown());
 
-        assertFalse(doubleDown.getPlayer().canDoubleDown());
-
-        doubleDown.getPlayer().hit();
-
-        assertTrue(doubleDown.getPlayer().canDoubleDown());
-
-        doubleDown.getPlayer().setBet(501);
-
-        assertFalse(doubleDown.getPlayer().canDoubleDown());
-
-        doubleDown.getPlayer().setBet(-2);
-
-        assertTrue(doubleDown.getPlayer().canDoubleDown());
-
-        doubleDown.getPlayer().hit();
-
-        assertFalse(doubleDown.getPlayer().canDoubleDown());
+        table = new TableProvider("doubleDown");
+        table.getPlayer().setBet(100);
+        table.getPlayer().setBank(50);
+        assertFalse(table.getPlayer().canDoubleDown());
     }
 
     @Test
@@ -106,32 +55,9 @@ public class PlayerTest {
         assertTrue(insurance.canBuyInsurance());
 
         insurance.getPlayer().setBet(750);
+        insurance.getPlayer().setBank(20);
 
         assertFalse(insurance.canBuyInsurance());
-    }
-
-    @Test
-    public void hit() throws Exception {
-    }
-
-    @Test
-    public void stand() throws Exception {
-    }
-
-    @Test
-    public void doubleDown() throws Exception {
-    }
-
-    @Test
-    public void split() throws Exception {
-    }
-
-    @Test
-    public void insurance() throws Exception {
-    }
-
-    @Test
-    public void dealerTurn() throws Exception {
     }
 
     @Test
@@ -143,19 +69,6 @@ public class PlayerTest {
         table.getPlayer().clearHand();
 
         assertTrue(table.getPlayer().getValue() == 0);
-    }
-
-    @Test
-    public void begin() throws Exception {
-        Table table = new Table();
-        table.getPlayer().clearHand();
-//        table.getPlayer().begin();
-
-        assertTrue(table.getPlayer().getValue() > 0 && table.getPlayer().getValue() < 12);
-    }
-
-    @Test
-    public void myCards() throws Exception {
     }
 
     @Test

@@ -2,16 +2,15 @@ package blackjack.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 /**
  * Created by Jan on 5/5/2017.
  */
 public class Deck {
     public static final int DECK_SIZE = Card.Rank.values().length * Card.Suit.values().length;
-    private Card[] cards;
+    protected Card[] cards;
+    protected int nextCard;
     private ArrayList<Integer> randomOrderOfCards;
-    private int nextCard;
 
     public Deck() {
         cards = new Card[DECK_SIZE];

@@ -11,10 +11,10 @@ public class DealerTest {
 
     @Test
     public void canTakeCard() throws Exception {
-        TableProvider aces = new TableProvider("aces");
+//        TableProvider aces = new TableProvider("aces");
         TableProvider takeCard = new TableProvider("takeCard");
 
-        assertFalse(aces.getDealer().canTakeCard());
+//        assertFalse(aces.getDealer().canTakeCard());
         assertTrue(takeCard.getDealer().canTakeCard());
 
         takeCard.getDealer().hit();
@@ -28,9 +28,8 @@ public class DealerTest {
 
     @Test
     public void gotBlackjack() throws Exception {
-        TableProvider aces = new TableProvider("aces");
-
-        assertTrue(aces.getDealer().gotBlackjack());
+        TableProvider table = new TableProvider("blackjack");
+        assertTrue(table.getDealer().gotBlackjack());
     }
 
     @Test

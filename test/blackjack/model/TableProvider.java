@@ -6,5 +6,7 @@ package blackjack.model;
 public class TableProvider extends Table {
     public TableProvider(String s) {
         this.deck = new DeckProvider(s);
+        this.dealer = new Dealer(deck);
+        this.player = new Player(deck);
     }
 }

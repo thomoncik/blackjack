@@ -5,8 +5,8 @@ package blackjack.model;
  */
 public class Table {
     protected Deck deck;
-    private Player player;
-    private Dealer dealer;
+    protected Player player;
+    protected Dealer dealer;
 
     public Table() {
         deck = new Deck();
