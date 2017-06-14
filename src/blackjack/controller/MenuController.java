@@ -6,6 +6,7 @@ import blackjack.StateManager;
 import blackjack.model.Table;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
  * @author Tomasz Homoncik
  */
 public class MenuController {
+    public ImageView title;
     @FXML
     AnchorPane anchorPane;
 
